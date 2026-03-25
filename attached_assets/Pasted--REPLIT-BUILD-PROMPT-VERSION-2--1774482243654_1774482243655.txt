@@ -1,0 +1,1261 @@
+# ================================================================
+REPLIT BUILD PROMPT — VERSION 2 (COMPLETE REBUILD)
+Rocket Floor Pros — Huntsville Epoxy Lead Gen Website
+
+# You are rebuilding an existing site from scratch with major
+improvements. Build a complete multi-page lead generation
+website. Read every section carefully before writing any code.
+
+# ================================================================
+WHAT THIS IS
+
+A lead generation website for epoxy garage floor coating
+services in Huntsville, Alabama. Goal: rank on Google for
+“epoxy garage floor Huntsville AL” and related terms, capture
+inbound leads (form fills + phone calls), and qualify them.
+
+This is NOT a contractor’s personal site. It looks like one,
+but it’s operated as a lead gen business. The footer says:
+“This site is operated by an independent lead generation service.”
+
+# ================================================================
+TECH STACK & FILE STRUCTURE
+
+Build the following files:
+
+ROOT:
+index.html          ← main landing page
+blog.html           ← blog listing page
+contact.html        ← dedicated contact page
+about.html          ← about/trust page
+privacy.html        ← privacy policy
+sitemap.xml         ← XML sitemap
+robots.txt          ← SEO robots file
+styles.css          ← shared stylesheet (linked from all pages)
+blog-post.html      ← sample blog article (template)
+
+LOCATION PAGES (for ranking in suburbs):
+madison-al.html     ← “Epoxy Garage Floor Madison AL”
+decatur-al.html     ← “Epoxy Garage Floor Decatur AL”
+athens-al.html      ← “Epoxy Garage Floor Athens AL”
+
+No frameworks. Pure HTML, CSS, JavaScript.
+CSS in external styles.css file linked from all pages.
+JS embedded in each page’s <script> tag before </body>.
+Google Fonts loaded via <link> in <head> of every page.
+
+# ================================================================
+BRAND & COLOR SYSTEM
+
+Business name: Rocket Floor Pros
+
+NEW COLOR PALETTE — WHITE + ROYAL BLUE THEME:
+–blue-900: #1E3A8A    (deep royal blue — headers, nav bg)
+–blue-700: #1D4ED8    (royal blue — primary buttons, links)
+–blue-500: #3B82F6    (medium blue — accents, icons)
+–blue-300: #93C5FD    (light blue — highlights, badges)
+–blue-50:  #EFF6FF    (very light blue — section backgrounds)
+–white:    #FFFFFF    (primary background)
+–gray-900: #0F172A    (body text)
+–gray-700: #334155    (secondary text)
+–gray-400: #94A3B8    (muted text, placeholders)
+–gray-100: #F1F5F9    (alternate light sections)
+–border:   #CBD5E1    (input borders, dividers)
+–success:  #16A34A    (form success states)
+–danger:   #DC2626    (form errors)
+
+CTA BUTTON STYLE (used everywhere):
+background: –blue-700
+color: white
+padding: 14px 28px
+font-weight: 700
+font-size: 15px
+letter-spacing: 0.04em
+text-transform: uppercase
+border-radius: 6px
+border: none
+cursor: pointer
+transition: background 0.2s
+hover: background –blue-900
+
+TYPOGRAPHY (Google Fonts — load in every page <head>):
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+Headlines: Montserrat, weight 700-800
+Body: Inter, weight 400-500
+NO Arial, Roboto, or system fonts
+
+# ================================================================
+GLOBAL COMPONENTS (same on every page)
+
+— STICKY HEADER —
+Height: 68px
+Before scroll: white background, border-bottom: 1px solid –border
+After scroll (add class “scrolled”): white bg + subtle box-shadow
+box-shadow: 0 2px 20px rgba(0,0,0,0.08)
+
+Left side:
+Logo: “ROCKET FLOOR PROS”
+Font: Montserrat 800, 20px, –blue-900
+Before it: a small blue circle icon (●) in –blue-500
+Below name: “Huntsville’s Garage Floor Specialists” in
+Inter 400, 11px, –gray-700
+
+Center (desktop only):
+Nav links: Home · Services · Gallery · Reviews · Blog · Areas
+Each: Inter 500, 14px, –gray-700, hover: –blue-700
+Active page: –blue-700, border-bottom: 2px solid –blue-500
+
+Right side:
+Phone: “(256) 712-4800” — Inter 600, 15px, –blue-900, tel: link
+CTA button: “FREE ESTIMATE” (compact version of CTA style)
+
+Mobile (< 768px):
+Hide center nav
+Show hamburger (☰) that opens a slide-down menu
+Menu shows: nav links, phone number, CTA button
+Menu bg: white, border-top: 3px solid –blue-700
+
+— FOOTER —
+Background: –blue-900
+Color: white
+Padding: 56px 0 24px
+
+4-column grid (stack to 2 cols on tablet, 1 col on mobile):
+
+COL 1 — Brand:
+Logo text (white)
+Tagline: “North Alabama’s #1 Epoxy Floor Coating Specialists”
+“Serving Huntsville and all of North Alabama”
+Phone: (256) 712-4800 (clickable, white)
+Hours: Mon–Sat 7am–6pm
+
+COL 2 — Services:
+Heading: “Our Services” (Inter 600, 13px, –blue-300, uppercase)
+Links (white, 0.75 opacity, hover white):
+Garage Floor Epoxy
+Polyaspartic Coating
+Metallic Epoxy
+Commercial Coating
+Free Estimate
+
+COL 3 — Service Areas:
+Heading: “Areas We Serve”
+Links: Huntsville · Madison · Decatur · Athens ·
+Harvest · Hampton Cove · Florence · Guntersville
+
+COL 4 — Resources:
+Heading: “Resources”
+Links: Blog · About Us · Contact · Privacy Policy
+Below: Google Reviews badge area
+“⭐⭐⭐⭐⭐ 4.9 · 127 Reviews”
+“View on Google” link (blue, underlined)
+
+Bottom bar:
+border-top: 1px solid rgba(255,255,255,0.1)
+“© 2025 Rocket Floor Pros · Huntsville, AL”
+“This site is operated by an independent lead generation service.”
+Both lines centered, 12px, white 0.4 opacity
+
+— STICKY MOBILE CTA BAR —
+Fixed to bottom on mobile only (< 768px)
+Height: 60px
+Background: –blue-900
+Two equal buttons side by side:
+LEFT: “📞 CALL NOW” → tel:(256)712-4800
+background: white, color: –blue-900, font-weight 700
+RIGHT: “GET FREE ESTIMATE” → scrolls to #estimate-form
+background: –blue-500, color: white, font-weight 700
+No border radius, flat to screen edges
+z-index: 999
+Add padding-bottom: 60px to <body> on mobile so content
+isn’t hidden behind bar
+
+# ================================================================
+PAGE 1: INDEX.HTML — MAIN LANDING PAGE
+
+— SEO <HEAD> FOR INDEX.HTML —
+
+<title>Epoxy Garage Floor Coating Huntsville AL | Free Estimate | Rocket Floor Pros</title>
+<meta name="description" content="Professional epoxy and polyaspartic garage floor coatings in Huntsville, Madison, Decatur & Athens AL. One-day installation. Lifetime warranty. Free estimates. Call (256) 712-4800.">
+<meta name="keywords" content="epoxy garage floor Huntsville AL, garage floor coating Huntsville, polyaspartic coating Huntsville Alabama, epoxy flooring Madison AL, garage floor coating Decatur AL">
+<link rel="canonical" href="https://www.rocketfloorpros.com/">
+<meta property="og:title" content="Epoxy Garage Floor Coating Huntsville AL | Rocket Floor Pros">
+<meta property="og:description" content="Transform your garage floor in one day. Free estimates. Lifetime warranty. Serving Huntsville, Madison, Decatur & Athens AL.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rocketfloorpros.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+
+Schema JSON-LD in <script type="application/ld+json">:
+{
+“@context”: “https://schema.org”,
+“@type”: “LocalBusiness”,
+“name”: “Rocket Floor Pros”,
+“description”: “Professional epoxy and polyaspartic garage floor coatings in Huntsville, Alabama”,
+“telephone”: “(256) 712-4800”,
+“url”: “https://www.rocketfloorpros.com”,
+“address”: {
+“@type”: “PostalAddress”,
+“addressLocality”: “Huntsville”,
+“addressRegion”: “AL”,
+“addressCountry”: “US”
+},
+“areaServed”: [“Huntsville AL”, “Madison AL”, “Decatur AL”, “Athens AL”, “Harvest AL”, “Hampton Cove AL”],
+“priceRange”: “$$”,
+“openingHours”: “Mo-Sa 07:00-18:00”,
+“aggregateRating”: {
+“@type”: “AggregateRating”,
+“ratingValue”: “4.9”,
+“reviewCount”: “127”
+},
+“hasOfferCatalog”: {
+“@type”: “OfferCatalog”,
+“name”: “Epoxy Floor Coating Services”,
+“itemListElement”: [
+{”@type”: “Offer”, “itemOffered”: {”@type”: “Service”, “name”: “Garage Floor Epoxy Coating”}},
+{”@type”: “Offer”, “itemOffered”: {”@type”: “Service”, “name”: “Polyaspartic Floor Coating”}},
+{”@type”: “Offer”, “itemOffered”: {”@type”: “Service”, “name”: “Metallic Epoxy Flooring”}},
+{”@type”: “Offer”, “itemOffered”: {”@type”: “Service”, “name”: “Commercial Epoxy Flooring”}}
+]
+}
+}
+
+Also add FAQPage schema for the FAQ section (below).
+Also add Google Analytics 4 placeholder comment:
+
+<!-- Replace with your GA4 tag: https://analytics.google.com -->
+
+<!-- Google Search Console verification: <meta name="google-site-verification" content="REPLACE"> -->
+
+=== SECTION A: HERO ===
+Background: white
+Min-height: 100vh on desktop, auto on mobile
+
+Desktop layout: 2 columns (55% left text, 45% right visual)
+Mobile: stack, text first, visual second
+
+LEFT COLUMN:
+Breadcrumb-style location tag at very top:
+“📍 Serving Huntsville, Madison, Decatur & Athens, AL”
+Inter 13px, –gray-700, margin-bottom 16px
+
+Eyebrow label:
+“HUNTSVILLE’S #1 RATED GARAGE FLOOR COATING”
+Montserrat 700, 12px, –blue-500, letter-spacing 0.15em,
+uppercase, margin-bottom 14px
+
+H1 (largest text on page):
+“Transform Your Garage Floor in One Day.”
+Montserrat 800, 58px desktop / 36px mobile, –gray-900
+Line height: 1.05
+“One Day.” on its own line, color: –blue-700
+
+Sub-headline:
+“Professional epoxy and polyaspartic floor coatings for
+homeowners across North Alabama. Free estimates.
+Lifetime warranty. Park your car the next morning.”
+Inter 400, 18px, –gray-700, line-height 1.6,
+max-width: 460px, margin-bottom: 32px
+
+MINI FORM (above-the-fold lead capture — KEY CONVERSION ELEMENT):
+A compact inline form card:
+background: –blue-50
+border: 1px solid –blue-300
+border-radius: 12px
+padding: 20px 24px
+
+```
+Form title: "Get Your Free Estimate — Takes 60 Seconds"
+  Inter 600, 14px, --blue-900, margin-bottom 14px
+
+Three fields in a row on desktop, stack on mobile:
+  1. Name input: placeholder "Your name"
+  2. Phone input: placeholder "(256) 555-0000"
+  3. Submit button: "GET FREE ESTIMATE →" (full CTA style)
+
+Below the row, small text:
+  "🔒 No spam. No obligation. We'll call you within the hour."
+  Inter 400, 12px, --gray-400
+```
+
+Trust signals row below form:
+Three pills in a row (flex-wrap on mobile):
+Each pill: border: 1px solid –blue-300, border-radius: 20px,
+padding: 6px 14px, –blue-700, Inter 500, 13px
+“✓ Free On-Site Estimate”
+“✓ One-Day Installation”
+“✓ Lifetime Warranty”
+
+RIGHT COLUMN:
+Main image area:
+background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)
+border-radius: 16px
+height: 500px desktop / 280px mobile
+border: 1px solid –blue-300
+display: flex, center content
+
+```
+[IMAGE PLACEHOLDER — styled to look intentional]:
+A styled div with:
+  background: #1E3A8A
+  border-radius: 12px
+  width: 90%, height: 85%
+  display flex, column, center
+  Text: "HERO IMAGE"
+  Sub: "Replace with: before/after garage floor photo"
+  Sub2: "Free source: unsplash.com → search 'epoxy garage floor'"
+  All text in --blue-300, Inter, small
+
+Floating stats card (overlapping bottom-left of image):
+  background: white
+  border-radius: 10px
+  padding: 16px 20px
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12)
+  "500+ Garages Coated" — Montserrat 700, 18px, --blue-900
+  "Across North Alabama" — Inter 400, 12px, --gray-700
+  border-left: 4px solid --blue-500
+
+Small badge top-right of image:
+  background: --blue-700
+  color: white
+  border-radius: 8px
+  padding: 8px 12px
+  "⭐ 4.9 · 127 Google Reviews"
+  Inter 600, 13px
+```
+
+=== SECTION B: TRUST BAR ===
+Background: –blue-900
+Padding: 20px 0
+Full-width
+
+Flex row, 4 items, centered, dividers between:
+“500+” / “Garages Coated”
+“1-Day” / “Installation”
+“Lifetime” / “Warranty”
+“A+” / “BBB Rating”
+
+Number: Montserrat 800, 28px, white
+Label: Inter 500, 12px, –blue-300, uppercase letter-spacing
+Dividers: 1px solid rgba(255,255,255,0.15)
+Mobile: 2×2 grid
+
+=== SECTION C: SERVICES ===
+Background: white
+Padding: 96px 0
+
+Section header centered:
+Eyebrow: “WHAT WE INSTALL” (–blue-500, 12px, uppercase, letter-spacing)
+H2: “Floor Coatings Built for North Alabama”
+Montserrat 800, 42px desktop / 28px mobile, –gray-900
+Sub: “Engineered for Alabama heat, humidity, and daily garage use.”
+Inter 400, 18px, –gray-700
+
+4-column card grid (2 cols on tablet, 1 col mobile):
+
+CARD DESIGN:
+background: white
+border: 1px solid –border
+border-radius: 12px
+padding: 32px 28px
+border-top: 4px solid –blue-500
+hover: transform translateY(-6px)
+transition: all 0.25s ease
+box-shadow on hover: 0 12px 40px rgba(30,58,138,0.12)
+
+Icon box: 48px × 48px, background: –blue-50, border-radius: 10px,
+display flex center, color: –blue-700, font-size: 22px
+Use text abbreviations: “EP” “PA” “ME” “CC” in Montserrat 700
+
+Category label: Inter 600, 11px, –blue-500, uppercase, letter-spacing
+Title: Montserrat 700, 20px, –gray-900
+Description: Inter 400, 15px, –gray-700, line-height 1.6
+Price note: Inter 600, 15px, –blue-700, margin-top 16px
+“Starting at $X,XXX” with an arrow link “Learn more →”
+
+CARD 1: Garage Floor Epoxy — Starting at $2,400
+CARD 2: Polyaspartic Coating — Starting at $3,200 (add “MOST POPULAR” badge: –blue-700 background, white text, Montserrat 700, 11px, absolute top-right corner, padding 4px 10px, border-radius 0 12px 0 8px)
+CARD 3: Metallic Epoxy Floors — Starting at $3,800
+CARD 4: Commercial & Industrial — Call for quote
+
+Below cards, centered:
+Inter 400, 15px, –gray-700:
+“Not sure which system is right for you? Our specialist will recommend
+the best option during your free on-site estimate — at no charge.”
+Blue link: “Schedule your free estimate →”
+
+=== SECTION D: HOW IT WORKS ===
+Background: –blue-50
+Padding: 96px 0
+
+Section header centered:
+Eyebrow: “THE PROCESS”
+H2: “From First Call to Coated Floor in 3 Steps”
+
+3-step layout — horizontal on desktop, vertical on mobile
+Connecting line between steps: 2px dashed –blue-300 (desktop only, centered between cards)
+
+Each step:
+background: white
+border-radius: 12px
+padding: 36px 28px
+border: 1px solid –blue-200
+Step number: Montserrat 800, 56px, –blue-100 (very faint, decorative bg text)
+Step badge: circle, –blue-700, white “01” inside, 36px diameter
+Title: Montserrat 700, 20px, –gray-900
+Body: Inter 400, 15px, –gray-700
+
+STEP 1: “You Call or Submit a Form” — “Takes 60 seconds. Tell us your
+address and the space you want coated. We answer every call,
+every day, even evenings.”
+
+STEP 2: “We Come Out and Measure — Free” — “A floor specialist visits
+your home within 24–48 hours, inspects the concrete, and provides
+an exact written quote. No pressure, no sales pitch.”
+
+STEP 3: “Your Floor is Done by Tomorrow” — “Most residential garages
+are completed in a single day. We prep, coat, and clean up.
+Walk on the floor in 6 hours. Park your car the next morning.”
+
+Below steps — SECOND FORM (mid-page capture):
+A centered card:
+background: –blue-900
+border-radius: 16px
+padding: 40px 48px desktop / 28px mobile
+max-width: 680px, margin: 48px auto 0
+
+```
+Title: "Ready to Get Started?" — Montserrat 800, 28px, white
+Sub: "Tell us your phone number and we'll call you within the hour."
+  Inter 400, 15px, white 0.75 opacity
+
+2-field form:
+  Phone number input (white bg input)
+  "GET CALLED BACK" button (full width, white bg, --blue-900 text)
+
+Below: "Or call us directly: (256) 712-4800"
+  white, Inter 500, 14px
+```
+
+=== SECTION E: PHOTO GALLERY ===
+Background: –gray-100
+Padding: 96px 0
+
+Section header:
+Eyebrow: “OUR WORK”
+H2: “Recent Installs in Huntsville & Surrounding Areas”
+
+CSS Grid gallery — 3 columns desktop, 2 tablet, 1 mobile
+6 image placeholders:
+
+Each placeholder:
+background: linear-gradient(135deg, #1E3A8A, #3B82F6)
+border-radius: 10px
+overflow: hidden
+position: relative
+cursor: pointer
+
+Overlay on hover: semi-transparent dark layer + magnifier icon
+
+Bottom caption bar (always visible):
+background: rgba(0,0,0,0.6) at bottom
+padding: 10px 14px
+Caption text in white
+
+Placeholder captions:
+
+1. “3-Car Garage · Metallic Silver · Hampton Cove, AL” — height 280px, spans 2 cols
+1. “2-Car Garage · Charcoal Flake · Madison, AL” — height 280px
+1. “Commercial Auto Shop · Decatur, AL” — height 220px
+1. “Patio + Walkway · Polyaspartic · Huntsville” — height 220px
+1. “Before/After · Standard Epoxy · Athens, AL” — height 220px
+1. “Basement Floor · Solid Color · Huntsville” — height 220px
+
+Watermark text centered in each placeholder:
+“PHOTO: [description]”
+“Add real photo here”
+“Source: unsplash.com / pexels.com”
+All in white, Inter 400, 13px, opacity 0.7
+
+PHOTO SOURCING NOTE (add as visible admin note styled div,
+with display:none by default — comment in code explains):
+/* TO ADD REAL PHOTOS:
+1. Go to unsplash.com, search “epoxy garage floor”
+2. Download: search “polyaspartic floor coating”
+3. Pexels.com: search “garage floor coating before after”
+4. Replace placeholder divs with <img> tags
+5. Always use alt=“Epoxy garage floor coating [city] AL” */
+
+Below gallery: centered
+“Every floor is one of a kind — see what yours could look like.”
+CTA button: “GET YOUR FREE ESTIMATE”
+
+=== SECTION F: LEAD CAPTURE FORM (PRIMARY) ===
+Background: white
+Padding: 96px 0
+ID: “estimate-form” (used by all scroll links)
+
+This is the most important section. TWO-COLUMN LAYOUT:
+
+LEFT COLUMN — Persuasion copy:
+Eyebrow: “FREE ESTIMATE”
+H2: “Tell Us About Your Project.”
+Montserrat 800, 42px desktop / 28px mobile, –gray-900
+
+Body: “Fill out the form and a coating specialist will call you
+within 60 minutes during business hours. We’ll walk you
+through your options, answer every question, and schedule
+a free on-site measurement.”
+Inter 400, 17px, –gray-700, line-height 1.7
+
+Three checkmark bullets:
+✅ Free on-site estimate — no fee, ever
+✅ We come to you — no need to go anywhere
+✅ Same-day quotes in most cases
+Style: Inter 500, 15px, –gray-700
+
+Urgency block:
+background: –blue-50
+border: 1px solid –blue-300
+border-left: 4px solid –blue-500
+border-radius: 8px
+padding: 14px 18px
+“⏱ Average response time: under 60 minutes”
+Inter 600, 14px, –blue-700
+
+Trust badges row below:
+Small icon + text items:
+🔒 Secure & Private · ⭐ 4.9 Google Rating · 📞 Real Humans Answer
+Inter 400, 13px, –gray-400
+
+RIGHT COLUMN — The form:
+White card:
+background: white
+border: 1px solid –border
+border-radius: 16px
+padding: 40px 36px
+box-shadow: 0 20px 60px rgba(0,0,0,0.08)
+
+Card header:
+“Request Your Free Estimate”
+Montserrat 700, 22px, –gray-900
+
+Sub: “We’ll contact you within 1 hour · Mon–Sat 7am–6pm”
+Inter 400, 13px, –gray-400, margin-bottom 24px
+
+FORM FIELDS (each field: label above, full-width input):
+
+Label style: Inter 600, 13px, –gray-700, margin-bottom 6px
+Input style: height 48px, border: 1px solid –border,
+border-radius: 8px, padding 0 14px, Inter 400, 15px,
+width: 100%, focus: border-color –blue-500,
+outline: 2px solid rgba(59,130,246,0.2)
+Error state: border-color –danger, red message below
+
+FIELD 1: First Name * — text, placeholder “Your first name”
+FIELD 2: Phone Number * — tel, placeholder “(256) 555-0000”
+Helper: “We’ll call or text — whichever you prefer”
+13px, –gray-400, italic
+FIELD 3: Email Address — email, placeholder “your@email.com”
+Helper: “Optional — for estimate confirmation”
+FIELD 4: Property Address * — text, placeholder “Street address, City”
+FIELD 5: Type of Project * — select:
+“Select your project type…”
+“Garage Floor (1-car) · ~200 sq ft”
+“Garage Floor (2-car) · ~400 sq ft”
+“Garage Floor (3-car or larger) · 600+ sq ft”
+“Patio or Walkway”
+“Basement Floor”
+“Commercial or Warehouse”
+“Other / Not Sure”
+FIELD 6: Timeline * — select:
+“How soon are you looking to start?”
+“As soon as possible”
+“Within the next month”
+“1–3 months out”
+“Just researching for now”
+FIELD 7: Are you the property owner? * — radio buttons
+○ Yes, I own this property
+○ No, I’m renting
+
+RENTER WARNING (show only when “renting” selected, hide otherwise):
+background: #FEF2F2, border: 1px solid #FCA5A5,
+border-radius 8px, padding 12px 14px
+“⚠️ Our installations require property owner approval.
+If you’d like, we can contact you once you’ve confirmed
+with your landlord.”
+–danger, Inter 400, 13px
+When renter is selected: disable submit button
+
+Hidden fields: _subject = “New Lead - Rocket Floor Pros”
+
+SUBMIT BUTTON (full width):
+“SEND MY FREE ESTIMATE REQUEST →”
+background: –blue-700
+height: 56px
+Montserrat 700, 17px, white, uppercase, letter-spacing
+border-radius: 8px
+hover: –blue-900
+
+Below button:
+“🔒 Your information is 100% private and never sold.”
+Inter 400, 12px, –gray-400, centered
+
+SUCCESS STATE (replace form on successful submit):
+Large ✅ in –success color (48px)
+“We’ve received your request!”
+Montserrat 700, 22px, –gray-900
+“A specialist will call you within the next 60 minutes.
+Keep your phone nearby — we may call or text.”
+Inter 400, 15px, –gray-700
+“While you wait, read our most common questions below →”
+Blue link to FAQ section
+
+Form action: https://formspree.io/f/REPLACE_WITH_YOUR_ID
+Method: POST
+
+=== SECTION G: SOCIAL PROOF / REVIEWS ===
+Background: –blue-50
+Padding: 96px 0
+
+Header:
+Eyebrow: “CUSTOMER REVIEWS”
+H2: “What North Alabama Homeowners Are Saying”
+
+Star rating centered:
+Five gold stars (★★★★★)
+“4.9 out of 5 · 127 Verified Google Reviews”
+Montserrat 700, 20px, –gray-900
+
+3-column review grid (1 col mobile):
+
+Review card style:
+background: white
+border: 1px solid –border
+border-radius: 12px
+padding: 28px 24px
+position: relative
+Large “ decorative quote: Montserrat 800, 80px, –blue-100,
+position absolute, top: 12px, left: 20px, line-height 1
+
+Star row: ★★★★★ in gold (#F59E0B), 18px
+Review text: Inter 400, 15px, –gray-700, line-height 1.7, italic
+Name: Inter 700, 14px, –gray-900, margin-top 16px
+Location + date: Inter 400, 13px, –gray-400
+
+REVIEW 1 — Jason M., Hampton Cove AL, Nov 2024:
+“They came out Tuesday, measured everything, gave me a quote
+on the spot. By Thursday my 3-car garage looked like a
+showroom floor. The polyaspartic finish is incredible — my
+wife actually commented on it, and she never notices the
+garage. Worth every penny.”
+
+REVIEW 2 — Diane K., Madison AL, Oct 2024:
+“I was skeptical about the ‘one day’ claim but they started at
+7:30am and were completely done by 3pm. The gray flake finish
+on my two-car garage is beautiful. No mess, super professional,
+and they even moved my shelving back. Would absolutely
+recommend.”
+
+REVIEW 3 — Mike T., Huntsville AL, Sep 2024:
+“I run an auto detailing business out of my garage and needed
+something that could handle chemicals and daily use. They
+recommended the commercial-grade polyaspartic and it’s been
+bulletproof. Easy to clean, looks amazing. Best upgrade I’ve
+made to my shop.”
+
+Below reviews, centered:
+“Join hundreds of North Alabama homeowners with floors they love.”
+CTA button: “GET MY FREE ESTIMATE”
+
+=== SECTION H: SERVICE AREA ===
+Background: white
+Padding: 96px 0
+
+Header:
+Eyebrow: “SERVICE AREA”
+H2: “Proudly Serving All of North Alabama”
+
+TWO columns:
+
+LEFT — Area content:
+Sub-heading: “Cities & Communities We Serve:”
+Montserrat 700, 18px, –gray-900
+
+CSS Grid 2-column list:
+Each item: ✓ [City] — Inter 500, 15px, –gray-700
+Checkmark in –blue-500
+
+✓ Huntsville          ✓ Madison
+✓ Decatur             ✓ Athens
+✓ Harvest             ✓ Toney
+✓ Hampton Cove        ✓ Owens Cross Roads
+✓ Meridianville       ✓ Florence
+✓ Guntersville        ✓ Albertville
+✓ Hartselle           ✓ Arab
+
+Below list:
+“Serving a 60-mile radius around Huntsville.
+Don’t see your city? Call us — we likely cover your area.”
+Inter 400, 15px, –gray-700
+
+Location page links (SEO-important internal links):
+“Detailed service info for your area:”
+→ Epoxy Flooring in Madison, AL
+→ Epoxy Flooring in Decatur, AL
+→ Epoxy Flooring in Athens, AL
+Each is a blue underlined link to the location pages
+
+Phone CTA:
+“(256) 712-4800”
+Montserrat 700, 28px, –blue-700, clickable tel: link
+
+RIGHT — Map placeholder:
+background: linear-gradient(135deg, –blue-50, –blue-100)
+border: 1px solid –blue-300
+border-radius: 12px
+height: 380px
+Center content:
+[MAP PLACEHOLDER]
+“Replace with: Google Maps embed”
+“Go to maps.google.com → your location →
+Share → Embed a map → copy iframe code”
+Blue text, centered, Inter 400, 13px
+
+=== SECTION I: FAQ ===
+Background: –gray-100
+Padding: 96px 0
+
+Header:
+Eyebrow: “FAQ”
+H2: “Common Questions About Epoxy Floor Coating”
+Max-width 600px, centered
+
+IMPORTANT: Add FAQPage schema for these questions.
+Add to <head> JSON-LD section as a second schema block.
+
+Accordion items (8 questions):
+Container: max-width 780px, margin auto
+Each item: background white, border-radius 10px,
+margin-bottom 8px, overflow hidden
+Question row: padding 20px 24px, cursor pointer, flex,
+justify-content space-between, Montserrat 600, 16px, –gray-900
+Answer: padding 0 24px 20px, Inter 400, 15px, –gray-700,
+line-height 1.7, max-height 0, overflow hidden,
+transition: max-height 0.35s ease
+Open state: max-height 500px
+Plus/minus icon: –blue-500, 22px, rotates 45deg when open
+
+Q1: “How much does epoxy garage floor coating cost in Huntsville?”
+A1: “Most residential garages in Huntsville run $2,400–$5,500
+depending on size, floor condition, and coating type. A
+standard two-car garage with epoxy flake coating typically
+costs $2,800–$3,400. We provide a free on-site estimate with
+exact pricing before any work begins.”
+
+Q2: “How long does epoxy floor installation take?”
+A2: “Most residential garages are completed in a single day.
+We arrive at 7:30–8am and finish by early afternoon. You can
+walk on the floor within 6 hours of completion and park your
+vehicle on it the following morning.”
+
+Q3: “What’s the difference between epoxy and polyaspartic?”
+A3: “Epoxy is our most affordable system — durable, attractive,
+and long-lasting. Polyaspartic is our premium offering: it
+cures 4x faster, is UV-stable (won’t yellow in sunlight),
+and is significantly harder and more scratch-resistant. We
+recommend polyaspartic for garages with sun-facing doors,
+commercial spaces, or anyone who wants the best possible finish.”
+
+Q4: “Do I need to be home during the installation?”
+A4: “You’ll need to be home at the start so we can walk through
+the scope and confirm details. After that, most customers go
+about their day. We’ll send you a photo and text when we’re
+finished.”
+
+Q5: “How do I prepare my garage before the install?”
+A5: “Remove everything from the garage floor — vehicles, storage
+boxes, floor-mounted shelving if possible. We handle all
+concrete surface preparation including grinding, crack repair,
+and cleaning. We’ll confirm specific prep requirements when
+we schedule your appointment.”
+
+Q6: “What if my concrete has cracks or oil stains?”
+A6: “Not a problem. Crack filling and surface prep are included
+in our standard installation process. We grind the concrete,
+fill cracks with 100% solid epoxy filler, and remove oils
+and stains before any coating is applied. The result bonds
+directly to the concrete.”
+
+Q7: “Is there a warranty on the floor coating?”
+A7: “Yes — all of our installations come with a lifetime warranty
+against peeling, flaking, or delamination when the floor is
+properly maintained per our care guidelines. We’ll walk you
+through maintenance at the end of your installation.”
+
+Q8: “Do you serve Madison, Decatur, and Athens, Alabama?”
+A8: “Absolutely. We serve the entire North Alabama region
+including Huntsville, Madison, Decatur, Athens, Harvest,
+Hampton Cove, Meridianville, Florence, and everywhere in
+between. If you’re within 60 miles of Huntsville, we most
+likely cover your area. Call us to confirm.”
+
+=== SECTION J: FINAL CTA ===
+Background: –blue-900
+Padding: 80px 0
+
+Centered content:
+H2: “Ready to Finally Have a Garage Floor You’re Proud Of?”
+Montserrat 800, 42px desktop / 28px mobile, white
+Sub: “Free estimate. No pressure. No obligation. Ever.”
+Inter 400, 18px, rgba(255,255,255,0.75)
+
+FOURTH FORM PLACEMENT (after reviews + FAQ — highest converting area):
+A tight centered form:
+background: rgba(255,255,255,0.08)
+border: 1px solid rgba(255,255,255,0.15)
+border-radius: 12px
+padding: 32px 40px
+max-width: 560px, margin: 32px auto
+
+```
+Two fields + button (all in a row on desktop):
+  Name input (white bg)
+  Phone input (white bg)
+  "GET FREE ESTIMATE" button (white bg, --blue-900 text)
+
+Below: "Or call directly: (256) 712-4800"
+  white, Inter 500, 15px
+```
+
+# ================================================================
+PAGE 2: BLOG.HTML — BLOG LISTING PAGE
+
+<title>Epoxy Flooring Blog | Tips, Costs & Guides | Rocket Floor Pros</title>
+<meta name="description" content="Read expert guides on epoxy garage floor coatings, costs, comparisons, and care tips from Rocket Floor Pros — Huntsville Alabama's floor coating specialists.">
+
+BLOG IS CRITICAL FOR SEO. It lets you rank for long-tail keywords
+that bring in search traffic and then convert to leads.
+
+Page layout: same header/footer as all pages
+
+HERO section (compact):
+Background: –blue-900
+Padding: 60px 0
+H1: “Epoxy Flooring Blog”
+Sub: “Guides, comparisons, and tips from North Alabama’s
+garage floor coating specialists.”
+Both white, centered
+
+MAIN CONTENT: Two-column layout
+Left: 70% — article grid
+Right: 30% — sticky sidebar
+
+ARTICLE CARD DESIGN (in grid):
+background: white
+border: 1px solid –border
+border-radius: 12px
+overflow: hidden
+hover: translateY(-4px), box-shadow
+
+Image area: 220px tall, background: –blue-50 placeholder
+[IMAGE PLACEHOLDER — replace with real image]
+Shows category badge top-left:
+background: –blue-700, white text, 11px Montserrat,
+padding 4px 10px, rounded
+
+Content area: padding 24px
+Category: “COST GUIDE” / “COMPARISON” / “HOW-TO” etc.
+Inter 600, 11px, –blue-500, uppercase, letter-spacing
+Title: Montserrat 700, 18px, –gray-900, line-height 1.3
+Excerpt: Inter 400, 14px, –gray-700, line-height 1.6
+max 2 lines
+Bottom: date left, “Read More →” right in –blue-700
+
+PRE-POPULATE WITH 6 SAMPLE ARTICLE CARDS:
+
+ARTICLE 1:
+Category: COST GUIDE
+Title: “How Much Does Epoxy Garage Floor Coating Cost in Huntsville, AL? (2025 Pricing)”
+Excerpt: “Complete breakdown of epoxy and polyaspartic coating costs in the Huntsville area, including what affects the price and how to get the best value.”
+Date: March 2025
+Link: blog-post.html
+
+ARTICLE 2:
+Category: COMPARISON
+Title: “Epoxy vs. Polyaspartic Floor Coating: Which Is Better for Alabama Garages?”
+Excerpt: “Both epoxy and polyaspartic have their place. Here’s an honest comparison to help you choose the right coating for your specific situation.”
+Date: February 2025
+
+ARTICLE 3:
+Category: HOW-TO
+Title: “How to Prepare Your Huntsville Garage for Epoxy Coating Installation”
+Excerpt: “What to remove, what to expect, and how to get your garage ready for a one-day floor coating installation.”
+Date: February 2025
+
+ARTICLE 4:
+Category: CARE GUIDE
+Title: “How to Clean and Maintain Your Epoxy Garage Floor (Step-by-Step)”
+Excerpt: “Protect your investment with these simple cleaning routines and maintenance tips to keep your epoxy floor looking new for years.”
+Date: January 2025
+
+ARTICLE 5:
+Category: GUIDE
+Title: “5 Signs Your Huntsville Garage Floor is Ready for Epoxy Coating”
+Excerpt: “Not every concrete floor is ready for coating. Here are the five things we check before recommending an epoxy installation.”
+Date: January 2025
+
+ARTICLE 6:
+Category: NEIGHBORHOOD
+Title: “Garage Floor Coating in Madison, AL: What Homeowners Need to Know”
+Excerpt: “Madison homeowners have specific needs due to the area’s newer construction and high-income demographics. Here’s what to expect locally.”
+Date: December 2024
+
+SIDEBAR CONTENT (sticky on desktop):
+
+Box 1 — Lead Capture Form:
+background: –blue-900
+border-radius: 12px
+padding: 28px 24px
+Title: “Get Your Free Estimate” (white, Montserrat 700, 18px)
+Sub: “Call or fill out the form below” (white 0.7, small)
+Name input + Phone input + “GET ESTIMATE” button (stacked)
+
+Box 2 — Popular Posts:
+background: white, border: 1px solid –border, border-radius 10px
+“Popular Articles” heading
+Linked list of 5 article titles
+
+Box 3 — Quick Contact:
+“Questions? Call Us”
+Phone number large and clickable
+Hours: Mon–Sat 7am–6pm
+
+# ================================================================
+PAGE 3: BLOG-POST.HTML — SAMPLE ARTICLE TEMPLATE
+
+This is the template for all blog articles. Fill with Article 1
+content (epoxy cost guide in Huntsville).
+
+<title>Epoxy Garage Floor Coating Cost in Huntsville AL (2025) | Rocket Floor Pros</title>
+<meta name="description" content="How much does epoxy garage floor coating cost in Huntsville, AL in 2025? We break down pricing for 1-car, 2-car, and 3-car garages, plus polyaspartic options.">
+
+Add Article schema:
+{
+“@type”: “Article”,
+“headline”: “How Much Does Epoxy Garage Floor Coating Cost in Huntsville AL?”,
+“datePublished”: “2025-03-01”,
+“author”: {”@type”: “Organization”, “name”: “Rocket Floor Pros”},
+“publisher”: {”@type”: “Organization”, “name”: “Rocket Floor Pros”}
+}
+
+ARTICLE LAYOUT:
+
+Header breadcrumb: Home > Blog > [Article Title]
+Inter 400, 13px, –gray-400 with → separators
+
+Article header:
+Category badge: COST GUIDE (–blue-700 bg, white, Montserrat)
+H1: “How Much Does Epoxy Garage Floor Coating Cost in
+Huntsville, AL? (2025 Pricing Guide)”
+Montserrat 800, 36px desktop / 24px mobile, –gray-900
+
+Meta row: “By Rocket Floor Pros · March 2025 · 8 min read”
+Inter 400, 13px, –gray-400
+
+Featured image placeholder:
+background: linear-gradient(135deg, –blue-50, –blue-200)
+height: 400px, border-radius 12px
+“FEATURED IMAGE: Epoxy garage floor before/after”
+“Replace with real photo from unsplash.com”
+
+ARTICLE BODY (two-column: 70% article, 30% sticky sidebar):
+
+Article text content — write full content:
+
+-----
+
+ARTICLE CONTENT START:
+
+If you’ve been Googling “how much does epoxy garage floor
+cost in Huntsville,” you’re probably getting a wide range of
+numbers with no real context. This guide breaks down exactly
+what you’ll pay in the North Alabama market in 2025.
+
+## Quick Answer: Huntsville Epoxy Pricing
+
+|Garage Size       |Epoxy Coating |Polyaspartic  |
+|------------------|--------------|--------------|
+|1-car (~200 sq ft)|$2,400–$3,000 |$3,000–$3,800 |
+|2-car (~400 sq ft)|$2,800–$3,800 |$3,500–$4,800 |
+|3-car (~600 sq ft)|$3,800–$5,500 |$4,800–$7,000 |
+|4-car / Large     |Call for quote|Call for quote|
+
+## What Affects the Cost?
+
+[Continue with 800-1000 words of genuine informational content
+covering: floor condition, coating type, color/flake options,
+crack repair, square footage, labor. Use proper H2/H3 headings.
+Write naturally, as if explaining to a homeowner.]
+
+## Is Epoxy Worth It for Huntsville Garages?
+
+[Discuss Alabama humidity and heat, durability, resale value,
+easy cleaning. 200-300 words.]
+
+## How to Get an Accurate Quote
+
+[Explain the free estimate process, what happens during a
+visit, why in-person quotes are more accurate than phone
+quotes. End with a CTA.]
+
+-----
+
+ARTICLE CONTENT END
+
+After article body:
+
+Author bio box:
+background: –blue-50, border-radius 12px, padding 24px
+“About the Author” — Montserrat 700, 16px
+“This article was written by the team at Rocket Floor Pros,
+North Alabama’s garage floor coating specialists since 2019.
+We’ve installed 500+ floors across Huntsville, Madison,
+Decatur, and Athens.”
+
+In-article CTA (after 3rd section, inline with text):
+A blue box with:
+“💬 Ready for an exact quote on YOUR garage?”
+“Call (256) 712-4800 or fill out our 60-second form.”
+Button: “GET FREE ESTIMATE”
+
+Related articles section:
+“You Might Also Like”
+3 article cards (smaller version of blog card style)
+
+End-of-article form:
+Same sidebar lead form, but full-width, below article
+“Enjoyed this guide? Get a free estimate for your project.”
+
+# ================================================================
+LOCATION PAGES: MADISON-AL.HTML, DECATUR-AL.HTML, ATHENS-AL.HTML
+
+These are SEO landing pages targeting suburb keywords.
+Build all three. They share the same structure but with unique
+content for each city. Example shown for Madison:
+
+MADISON-AL.HTML:
+
+<title>Epoxy Garage Floor Coating Madison, AL | Free Estimate | Rocket Floor Pros</title>
+<meta name="description" content="Professional epoxy and polyaspartic garage floor coating in Madison, Alabama. One-day installation. Free estimates. Lifetime warranty. Call (256) 712-4800.">
+
+H1: “Epoxy Garage Floor Coating in Madison, AL”
+Unique intro paragraph mentioning Madison specifically:
+“Madison is one of North Alabama’s fastest-growing communities,
+and homeowners here consistently choose professional epoxy
+floor coatings to match the high standards of the area’s
+newer homes and subdivisions…”
+
+Otherwise same sections as homepage (services, process, form,
+reviews, FAQ) but with “Madison” replacing “Huntsville” in text.
+
+Build identical pages for Decatur and Athens with their own
+unique intro paragraphs.
+
+# ================================================================
+CONTACT.HTML — DEDICATED CONTACT PAGE
+
+<title>Contact Rocket Floor Pros | Epoxy Flooring Huntsville AL</title>
+
+Two columns:
+Left: Contact info (address area, phone, hours, map placeholder)
+Right: Full contact form (same as homepage main form)
+
+Above form: “We typically respond within 1 hour during business hours.”
+
+# ================================================================
+ABOUT.HTML — TRUST PAGE
+
+<title>About Rocket Floor Pros | Huntsville Garage Floor Specialists</title>
+
+Sections:
+Our story (brief, local focus)
+Why choose us (5 differentiators)
+Our team (placeholder headshots + names)
+Our service area
+CTA to contact
+
+# ================================================================
+SITEMAP.XML
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.rocketfloorpros.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/blog.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/blog-post.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/madison-al.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/decatur-al.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/athens-al.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/contact.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.rocketfloorpros.com/about.html</loc><priority>0.6</priority></url>
+</urlset>
+
+# ================================================================
+ROBOTS.TXT
+
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+Sitemap: https://www.rocketfloorpros.com/sitemap.xml
+
+# ================================================================
+JAVASCRIPT (embed in each page before </body>)
+
+1. SCROLL BEHAVIOR:
+   Add “scrolled” class to header when window.scrollY > 60
+1. FAQ ACCORDION:
+   Toggle max-height on answer divs
+   Close others when one opens
+   Rotate icon 45 degrees when open
+1. FORM VALIDATION (on all forms):
+   Required: name, phone, project type, timeline, owner confirmation
+   Phone regex validation
+   If renter radio selected: disable submit, show warning
+   Shake animation on invalid submit attempt
+   Smooth scroll to first error field
+1. MINI-HERO FORM: On submit, populates the main form below
+   with the entered name + phone, then smooth scrolls to it
+1. ALL FORMS → FORMSPREE:
+   All forms POST to https://formspree.io/f/REPLACE_WITH_YOUR_ID
+   Handle success: replace form with success message
+   Handle error: show error message, keep form visible
+1. SMOOTH SCROLL:
+   All #anchor links scroll smoothly
+1. INTERSECTION OBSERVER:
+   Elements with class “fade-in” animate in when entering viewport:
+   opacity: 0 → 1, translateY(20px) → 0, 0.5s ease
+   Apply to: section headers, cards, review cards, form
+1. PHONE CLICK TRACKING:
+   On any tel: link click, push to dataLayer if GTM present:
+   dataLayer.push({event: ‘phone_click’, location: [element id]})
+1. MOBILE MENU:
+   Hamburger opens/closes nav menu
+   Close on outside click or ESC key
+
+# ================================================================
+GLOBAL CSS REQUIREMENTS (styles.css)
+
+Include:
+CSS custom properties (all –color variables at :root)
+CSS reset (box-sizing, margin 0, padding 0)
+Container class: max-width 1200px, margin auto, padding 0 24px
+Section class: padding 80px 0 by default
+Responsive grid utilities
+Button base styles
+Input/select base styles
+Form validation error states
+Fade-in animation keyframes
+Mobile-first media queries at 640px, 768px, 1024px
+
+RESPONSIVE REQUIREMENTS:
+Mobile (< 768px):
+- All multi-column grids → single column
+- Hero: text first, image second, H1 36px
+- All font sizes reduce proportionally
+- Sticky bottom CTA bar visible
+- Form: full-width card, no padding
+- Nav: hamburger menu
+- Trust bar: 2×2 grid
+- Footer: single column
+
+# ================================================================
+SAMPLE IMAGE SOURCES — ADD AS COMMENTS IN HTML
+
+Add this block as an HTML comment at top of index.html:
+
+<!--
+=== FREE PHOTO SOURCES FOR THIS SITE ===
+
+HERO IMAGE (garage floor before/after):
+  Unsplash.com → search: "epoxy garage floor"
+  Best free options by search term:
+  - "garage floor coating"
+  - "polyaspartic floor"
+  - "concrete floor coating"
+  - "garage makeover"
+
+GALLERY PHOTOS:
+  Pexels.com → "garage floor" "epoxy floor coating"
+  Unsplash.com → "garage interior" "workshop floor"
+
+BLOG FEATURED IMAGES:
+  Unsplash.com → "garage" "concrete floor" "home improvement"
+
+HOW TO ADD PHOTOS:
+  1. Download from unsplash.com (free, no attribution needed)
+  2. Name files descriptively: epoxy-garage-huntsville-al.jpg
+  3. Replace placeholder divs:
+     <div class="photo-placeholder">...</div>
+     WITH:
+     <img src="images/your-photo.jpg" 
+          alt="Epoxy garage floor coating Huntsville AL"
+          loading="lazy"
+          width="800" height="600">
+  4. Create an /images/ folder and put photos there
+  
+ALWAYS include descriptive alt text with city name for SEO!
+Example: alt="Epoxy garage floor coating Madison Alabama 2-car garage"
+-->
+
+# ================================================================
+SEO CHECKLIST — VERIFY BEFORE PUBLISHING
+
+Add this as an HTML comment at bottom of each file:
+
+<!--
+SEO CHECKLIST FOR THIS PAGE:
+[ ] Title tag includes primary keyword + location
+[ ] Meta description under 160 characters, includes CTA
+[ ] H1 includes primary keyword (only ONE H1 per page)
+[ ] H2s use supporting keywords naturally
+[ ] All images have descriptive alt text with location
+[ ] Internal links to other pages on this site
+[ ] External link to Google Business Profile
+[ ] Schema JSON-LD is valid (test at schema.org/validator)
+[ ] Page loads under 3 seconds
+[ ] Mobile-responsive (test at search.google.com/test/mobile-friendly)
+[ ] Canonical URL set correctly
+[ ] Form action points to real Formspree endpoint
+[ ] Google Analytics tag installed
+[ ] Google Search Console verification meta tag added
+-->
+
+# ================================================================
+FINAL INSTRUCTIONS
+
+1. Build ALL files listed in the file structure section
+1. Use the blue/white color palette throughout — no dark
+   backgrounds except the header, trust bar, “How it Works”
+   CTA card, and footer
+1. Make every phone number a clickable tel: link
+1. The sticky mobile bottom bar must appear on ALL pages
+1. Every page must link to all other pages via nav + footer
+1. Blog articles must link back to the homepage form
+1. Location pages must have unique H1s and intro paragraphs
+1. All forms on all pages POST to the same Formspree endpoint
+1. Test that the renter disqualifier works on the main form
+1. Ensure all fade-in animations work on scroll
+1. The blog-post.html must include a full ~1,000 word article
+1. Validate that sitemap.xml is well-formed XML
+1. Add Google Fonts link to EVERY page’s <head>
+
+COLOR REMINDER: White backgrounds, –blue-900 for dark sections
+(header, trust bar, how-it-works CTA, final CTA, footer).
+No black backgrounds. No gold. No dark navy on large sections.
+The site should feel clean, professional, and trustworthy.
+
+# ================================================================
+END OF PROMPT

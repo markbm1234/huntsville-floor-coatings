@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Rocket Floor Pros"
+version = "1.0.0"
+id = "artifacts/rocket-floor-pros"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19596
+
+[services.development]
+run = "pnpm --filter @workspace/rocket-floor-pros run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rocket-floor-pros", "run", "build" ]
+publicDir = "artifacts/rocket-floor-pros/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19596"
+BASE_PATH = "/"

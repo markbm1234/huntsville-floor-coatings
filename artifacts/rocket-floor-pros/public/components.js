@@ -1,0 +1,473 @@
+// Shared components for Rocket Floor Pros website
+
+function getNavActiveClass(page) {
+  return '';
+}
+
+function renderHeader(activePage) {
+  const pages = [
+    { href: 'index.html', label: 'Home', key: 'home' },
+    { href: 'index.html#services', label: 'Services', key: 'services' },
+    { href: 'index.html#gallery', label: 'Gallery', key: 'gallery' },
+    { href: 'index.html#reviews', label: 'Reviews', key: 'reviews' },
+    { href: 'blog.html', label: 'Blog', key: 'blog' },
+    { href: 'index.html#service-area', label: 'Areas', key: 'areas' },
+  ];
+
+  const navLinks = pages.map(p =>
+    `<a href="${p.href}" class="${activePage === p.key ? 'active' : ''}">${p.label}</a>`
+  ).join('');
+
+  return `
+    <header class="site-header" id="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo">
+            <span class="logo-name">
+              <span class="logo-dot"></span>
+              ROCKET FLOOR PROS
+            </span>
+            <span class="logo-tagline">Huntsville's Garage Floor Specialists</span>
+          </a>
+          <nav class="main-nav">
+            ${navLinks}
+          </nav>
+          <div class="header-right">
+            <a href="tel:2567124800" class="header-phone">(256) 712-4800</a>
+            <a href="index.html#estimate-form" class="btn header-cta">FREE ESTIMATE</a>
+          </div>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:2567124800" class="mobile-phone">(256) 712-4800</a>
+        <a href="index.html#estimate-form" class="btn" style="text-align:center;">GET FREE ESTIMATE</a>
+      </nav>
+    </header>
+  `;
+}
+
+function renderFooter() {
+  return `
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo-name">
+              <span class="logo-dot" style="background: var(--blue-300);"></span>
+              ROCKET FLOOR PROS
+            </div>
+            <p class="footer-tagline">North Alabama's #1 Epoxy Floor Coating Specialists</p>
+            <p class="footer-service-area">Serving Huntsville and all of North Alabama</p>
+            <a href="tel:2567124800" class="footer-phone">(256) 712-4800</a>
+            <p class="footer-hours">Mon–Sat 7am–6pm</p>
+          </div>
+          <div>
+            <p class="footer-col-heading">Our Services</p>
+            <ul class="footer-links">
+              <li><a href="index.html#services">Garage Floor Epoxy</a></li>
+              <li><a href="index.html#services">Polyaspartic Coating</a></li>
+              <li><a href="index.html#services">Metallic Epoxy</a></li>
+              <li><a href="index.html#services">Commercial Coating</a></li>
+              <li><a href="index.html#estimate-form">Free Estimate</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-col-heading">Areas We Serve</p>
+            <ul class="footer-links">
+              <li><a href="index.html">Huntsville</a></li>
+              <li><a href="madison-al.html">Madison</a></li>
+              <li><a href="decatur-al.html">Decatur</a></li>
+              <li><a href="athens-al.html">Athens</a></li>
+              <li><a href="index.html#service-area">Harvest</a></li>
+              <li><a href="index.html#service-area">Hampton Cove</a></li>
+              <li><a href="index.html#service-area">Florence</a></li>
+              <li><a href="index.html#service-area">Guntersville</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-col-heading">Resources</p>
+            <ul class="footer-links">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+            <div class="footer-reviews mt-16">
+              <div>⭐⭐⭐⭐⭐ 4.9 · 127 Reviews</div>
+              <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="footer-reviews-link">View on Google</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© 2025 Rocket Floor Pros · Huntsville, AL</p>
+          <p>This site is operated by an independent lead generation service.</p>
+        </div>
+      </div>
+    </footer>
+    <div class="mobile-cta-bar">
+      <div class="mobile-cta-bar-inner">
+        <a href="tel:2567124800" class="mobile-cta-call">📞 CALL NOW</a>
+        <a href="index.html#estimate-form" class="mobile-cta-estimate">GET FREE ESTIMATE</a>
+      </div>
+    </div>
+  `;
+}
+
+function renderFAQ() {
+  const faqs = [
+    {
+      q: 'How much does epoxy garage floor coating cost in Huntsville?',
+      a: 'Most residential garages in Huntsville run $2,400–$5,500 depending on size, floor condition, and coating type. A standard two-car garage with epoxy flake coating typically costs $2,800–$3,400. We provide a free on-site estimate with exact pricing before any work begins.'
+    },
+    {
+      q: 'How long does epoxy floor installation take?',
+      a: 'Most residential garages are completed in a single day. We arrive at 7:30–8am and finish by early afternoon. You can walk on the floor within 6 hours of completion and park your vehicle on it the following morning.'
+    },
+    {
+      q: "What's the difference between epoxy and polyaspartic?",
+      a: 'Epoxy is our most affordable system — durable, attractive, and long-lasting. Polyaspartic is our premium offering: it cures 4x faster, is UV-stable (won\'t yellow in sunlight), and is significantly harder and more scratch-resistant. We recommend polyaspartic for garages with sun-facing doors, commercial spaces, or anyone who wants the best possible finish.'
+    },
+    {
+      q: 'Do I need to be home during the installation?',
+      a: "You'll need to be home at the start so we can walk through the scope and confirm details. After that, most customers go about their day. We'll send you a photo and text when we're finished."
+    },
+    {
+      q: 'How do I prepare my garage before the install?',
+      a: 'Remove everything from the garage floor — vehicles, storage boxes, floor-mounted shelving if possible. We handle all concrete surface preparation including grinding, crack repair, and cleaning. We\'ll confirm specific prep requirements when we schedule your appointment.'
+    },
+    {
+      q: 'What if my concrete has cracks or oil stains?',
+      a: "Not a problem. Crack filling and surface prep are included in our standard installation process. We grind the concrete, fill cracks with 100% solid epoxy filler, and remove oils and stains before any coating is applied. The result bonds directly to the concrete."
+    },
+    {
+      q: 'Is there a warranty on the floor coating?',
+      a: "Yes — all of our installations come with a lifetime warranty against peeling, flaking, or delamination when the floor is properly maintained per our care guidelines. We'll walk you through maintenance at the end of your installation."
+    },
+    {
+      q: 'Do you serve Madison, Decatur, and Athens, Alabama?',
+      a: 'Absolutely. We serve the entire North Alabama region including Huntsville, Madison, Decatur, Athens, Harvest, Hampton Cove, Meridianville, Florence, and everywhere in between. If you\'re within 60 miles of Huntsville, we most likely cover your area. Call us to confirm.'
+    }
+  ];
+
+  return faqs.map((faq, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-question" onclick="toggleFAQ(${i})">
+        <span>${faq.q}</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">${faq.a}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMainForm(idSuffix) {
+  idSuffix = idSuffix || '';
+  return `
+    <div class="form-card">
+      <h3 class="form-card-title">Request Your Free Estimate</h3>
+      <p class="form-card-sub">We'll contact you within 1 hour · Mon–Sat 7am–6pm</p>
+      <div id="form-success${idSuffix}" class="form-success">
+        <div class="form-success-check" style="color: var(--success);">✅</div>
+        <h3 class="form-success-title">We've received your request!</h3>
+        <p class="form-success-body">A specialist will call you within the next 60 minutes.<br>Keep your phone nearby — we may call or text.</p>
+        <a href="#faq" class="blue-link">While you wait, read our most common questions below →</a>
+      </div>
+      <form id="main-form${idSuffix}" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <input type="hidden" name="_subject" value="New Lead - Rocket Floor Pros">
+        <div class="form-group">
+          <label class="form-label" for="name${idSuffix}">First Name *</label>
+          <input class="form-input" type="text" id="name${idSuffix}" name="name" placeholder="Your first name" required>
+          <div class="form-error-msg" id="name-err${idSuffix}">Please enter your name.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone${idSuffix}">Phone Number *</label>
+          <input class="form-input" type="tel" id="phone${idSuffix}" name="phone" placeholder="(256) 555-0000" required>
+          <div class="form-helper">We'll call or text — whichever you prefer</div>
+          <div class="form-error-msg" id="phone-err${idSuffix}">Please enter a valid phone number.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email${idSuffix}">Email Address</label>
+          <input class="form-input" type="email" id="email${idSuffix}" name="email" placeholder="your@email.com">
+          <div class="form-helper">Optional — for estimate confirmation</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="address${idSuffix}">Property Address *</label>
+          <input class="form-input" type="text" id="address${idSuffix}" name="address" placeholder="Street address, City" required>
+          <div class="form-error-msg" id="address-err${idSuffix}">Please enter your property address.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="project-type${idSuffix}">Type of Project *</label>
+          <select class="form-select" id="project-type${idSuffix}" name="project_type" required>
+            <option value="">Select your project type…</option>
+            <option value="garage-1car">Garage Floor (1-car) · ~200 sq ft</option>
+            <option value="garage-2car">Garage Floor (2-car) · ~400 sq ft</option>
+            <option value="garage-3car">Garage Floor (3-car or larger) · 600+ sq ft</option>
+            <option value="patio">Patio or Walkway</option>
+            <option value="basement">Basement Floor</option>
+            <option value="commercial">Commercial or Warehouse</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+          <div class="form-error-msg" id="project-err${idSuffix}">Please select a project type.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="timeline${idSuffix}">Timeline *</label>
+          <select class="form-select" id="timeline${idSuffix}" name="timeline" required>
+            <option value="">How soon are you looking to start?</option>
+            <option value="asap">As soon as possible</option>
+            <option value="month">Within the next month</option>
+            <option value="1-3months">1–3 months out</option>
+            <option value="researching">Just researching for now</option>
+          </select>
+          <div class="form-error-msg" id="timeline-err${idSuffix}">Please select a timeline.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Are you the property owner? *</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="owner${idSuffix}" value="owner" onchange="handleOwner('owner', '${idSuffix}')"> Yes, I own this property
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="owner${idSuffix}" value="renter" onchange="handleOwner('renter', '${idSuffix}')"> No, I'm renting
+            </label>
+          </div>
+          <div class="renter-warning" id="renter-warning${idSuffix}">
+            ⚠️ Our installations require property owner approval. If you'd like, we can contact you once you've confirmed with your landlord.
+          </div>
+          <div class="form-error-msg" id="owner-err${idSuffix}">Please select an option.</div>
+        </div>
+        <button type="submit" class="btn btn-full" id="submit-btn${idSuffix}" style="height:56px; font-family: 'Montserrat', sans-serif; font-size:17px; border-radius:8px; margin-top:8px;">
+          SEND MY FREE ESTIMATE REQUEST →
+        </button>
+        <p class="form-submit-note">🔒 Your information is 100% private and never sold.</p>
+      </form>
+    </div>
+  `;
+}
+
+// ===========================
+// SHARED JS BEHAVIORS
+// ===========================
+
+function initHeader() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') mobileMenu.classList.remove('open');
+    });
+  }
+}
+
+function toggleFAQ(index) {
+  const item = document.getElementById('faq-' + index);
+  if (!item) return;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function handleOwner(value, suffix) {
+  suffix = suffix || '';
+  const warning = document.getElementById('renter-warning' + suffix);
+  const btn = document.getElementById('submit-btn' + suffix);
+  if (value === 'renter') {
+    warning && warning.classList.add('visible');
+    btn && (btn.disabled = true);
+    btn && (btn.style.opacity = '0.5');
+  } else {
+    warning && warning.classList.remove('visible');
+    btn && (btn.disabled = false);
+    btn && (btn.style.opacity = '1');
+  }
+}
+
+function validatePhone(phone) {
+  return /[\d\s\-\(\)]{7,}/.test(phone);
+}
+
+function initMainForm(suffix) {
+  suffix = suffix || '';
+  const form = document.getElementById('main-form' + suffix);
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    const name = document.getElementById('name' + suffix);
+    const phone = document.getElementById('phone' + suffix);
+    const address = document.getElementById('address' + suffix);
+    const projectType = document.getElementById('project-type' + suffix);
+    const timeline = document.getElementById('timeline' + suffix);
+    const ownerRadios = form.querySelectorAll('input[name="owner' + suffix + '"]');
+    const ownerChecked = [...ownerRadios].some(r => r.checked);
+
+    const fields = [
+      { el: name, err: 'name-err' + suffix, check: v => v.trim() !== '' },
+      { el: phone, err: 'phone-err' + suffix, check: validatePhone },
+      { el: address, err: 'address-err' + suffix, check: v => v.trim() !== '' },
+      { el: projectType, err: 'project-err' + suffix, check: v => v !== '' },
+      { el: timeline, err: 'timeline-err' + suffix, check: v => v !== '' },
+    ];
+
+    fields.forEach(f => {
+      const errEl = document.getElementById(f.err);
+      if (!f.el) return;
+      if (!f.check(f.el.value)) {
+        valid = false;
+        f.el.classList.add('error');
+        errEl && errEl.classList.add('visible');
+      } else {
+        f.el.classList.remove('error');
+        errEl && errEl.classList.remove('visible');
+      }
+    });
+
+    const ownerErrEl = document.getElementById('owner-err' + suffix);
+    if (!ownerChecked) {
+      valid = false;
+      ownerErrEl && ownerErrEl.classList.add('visible');
+    } else {
+      ownerErrEl && ownerErrEl.classList.remove('visible');
+    }
+
+    if (!valid) {
+      form.classList.add('shake');
+      setTimeout(() => form.classList.remove('shake'), 400);
+      const firstError = form.querySelector('.form-input.error, .form-select.error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const submitBtn = document.getElementById('submit-btn' + suffix);
+    if (submitBtn) {
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+    }
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        const success = document.getElementById('form-success' + suffix);
+        success && success.classList.add('visible');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      if (submitBtn) {
+        submitBtn.textContent = 'SEND MY FREE ESTIMATE REQUEST →';
+        submitBtn.disabled = false;
+      }
+      alert('There was an issue submitting the form. Please call us directly at (256) 712-4800.');
+    }
+  });
+}
+
+function initMiniForm() {
+  const miniForm = document.getElementById('mini-hero-form');
+  if (!miniForm) return;
+  miniForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const miniName = document.getElementById('mini-name');
+    const miniPhone = document.getElementById('mini-phone');
+    const mainName = document.getElementById('name');
+    const mainPhone = document.getElementById('phone');
+    if (mainName && miniName) mainName.value = miniName.value;
+    if (mainPhone && miniPhone) mainPhone.value = miniPhone.value;
+    const estimateForm = document.getElementById('estimate-form');
+    if (estimateForm) estimateForm.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+function initSimpleForms() {
+  document.querySelectorAll('.simple-form').forEach(form => {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const origText = btn ? btn.textContent : '';
+      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+      try {
+        const data = new FormData(form);
+        const response = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_ID', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.innerHTML = '<p style="color: var(--success); font-family: Inter, sans-serif; font-weight:600; text-align:center; padding:20px 0;">✅ Request received! We\'ll call you within the hour.</p>';
+        } else throw new Error();
+      } catch {
+        if (btn) { btn.textContent = origText; btn.disabled = false; }
+        alert('Please call us directly at (256) 712-4800.');
+      }
+    });
+  });
+}
+
+function initFadeIn() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+function initPhoneTracking() {
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'phone_click',
+          location: link.closest('[id]') ? link.closest('[id]').id : 'unknown'
+        });
+      }
+    });
+  });
+}
+
+function initAll(options) {
+  options = options || {};
+  initHeader();
+  initFadeIn();
+  initPhoneTracking();
+  initSimpleForms();
+  if (options.miniForm) initMiniForm();
+  if (options.mainForm) initMainForm('');
+}

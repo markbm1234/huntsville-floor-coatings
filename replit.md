@@ -94,3 +94,31 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
+
+### `artifacts/rocket-floor-pros` (Rocket Floor Pros website)
+
+Static HTML/CSS/JS lead generation website for an epoxy and polyaspartic garage floor coating service in Huntsville, Alabama. No backend — all pages are static files served by Vite from the `public/` directory.
+
+**Pages:**
+- `public/index.html` — Full homepage with 10 sections: hero, trust bar, services, process, gallery, lead form, reviews, service area, FAQ, CTA
+- `public/blog.html` — Blog index with 6 article cards + sidebar lead form
+- `public/blog-post.html` — Sample blog article (cost guide, ~1000 words with pricing tables)
+- `public/madison-al.html` — Madison, AL location SEO page
+- `public/decatur-al.html` — Decatur, AL location SEO page
+- `public/athens-al.html` — Athens, AL location SEO page
+- `public/contact.html` — Contact page with full form
+- `public/about.html` — About page with team and differentiators
+- `public/privacy.html` — Privacy policy (noindex)
+- `public/sitemap.xml` — XML sitemap
+- `public/robots.txt` — robots.txt
+- `public/styles.css` — All site styles (design tokens, components, responsive)
+- `public/components.js` — Shared renderHeader/renderFooter/renderFAQ, form validation, animations
+
+**Key details:**
+- Phone: (256) 712-4800
+- Forms: POST to `https://formspree.io/f/REPLACE_WITH_YOUR_ID` — must be replaced with real Formspree endpoint
+- Design: Blue/white palette — `--blue-900` (#1E3A8A), `--blue-700` (#1D4ED8), `--blue-500` (#3B82F6)
+- Fonts: Montserrat (headings) + Inter (body)
+- SEO: LocalBusiness + FAQPage JSON-LD schema, meta tags, canonical URLs, sitemap
+- `src/App.tsx` redirects to `public/index.html` since Vite serves static files from `public/`
+- All image placeholders include instructions for free photo sources (unsplash.com, pexels.com)
