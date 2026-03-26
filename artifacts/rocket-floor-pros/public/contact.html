@@ -109,11 +109,10 @@
           </div>
         </div>
 
-        <div class="map-placeholder" style="margin-top: 32px;">
-          <div class="map-icon">🗺️</div>
-          <p>[MAP PLACEHOLDER]<br>Replace with Google Maps embed<br><br>
-          Go to maps.google.com → share → embed a map</p>
-        </div>
+        <img src="images/north-alabama-map.jpg"
+             alt="Areas We Serve in North Alabama — Huntsville, Madison, Decatur, Athens and surrounding communities"
+             style="width: 100%; border-radius: 16px; display: block; margin-top: 32px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);"
+             loading="lazy">
       </div>
 
       <!-- Right: Contact Form -->
@@ -131,52 +130,56 @@
           <p class="form-card-sub">We'll contact you within 1 hour · Mon–Sat 7am–6pm</p>
           <form id="contact-form" action="https://formspree.io/f/xpwqrjkl" method="POST">
             <input type="hidden" name="_subject" value="Contact Page Lead - Rocket Floor Pros">
-            <div class="form-group">
-              <label class="form-label" for="c-name">First Name *</label>
-              <input class="form-input" type="text" id="c-name" name="name" placeholder="Your first name" required>
+            <div class="form-inline-row">
+              <div class="form-group">
+                <label class="form-label" for="c-name">First Name *</label>
+                <input class="form-input" type="text" id="c-name" name="name" placeholder="First name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="c-phone">Phone *</label>
+                <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="(256) 555-0000" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="c-phone">Phone Number *</label>
-              <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="(256) 555-0000" required>
-              <div class="form-helper">We'll call or text — whichever you prefer</div>
+            <div class="form-inline-row">
+              <div class="form-group">
+                <label class="form-label" for="c-email">Email</label>
+                <input class="form-input" type="email" id="c-email" name="email" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="c-address">Property Address *</label>
+                <input class="form-input" type="text" id="c-address" name="address" placeholder="Street address, City" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="c-email">Email Address</label>
-              <input class="form-input" type="email" id="c-email" name="email" placeholder="your@email.com">
-              <div class="form-helper">Optional — for estimate confirmation</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="c-address">Property Address *</label>
-              <input class="form-input" type="text" id="c-address" name="address" placeholder="Street address, City" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="c-project-type">Type of Project *</label>
-              <select class="form-select" id="c-project-type" name="project_type" required>
-                <option value="">Select your project type…</option>
-                <option value="garage-1car">Garage Floor (1-car) · ~200 sq ft</option>
-                <option value="garage-2car">Garage Floor (2-car) · ~400 sq ft</option>
-                <option value="garage-3car">Garage Floor (3-car or larger) · 600+ sq ft</option>
-                <option value="patio">Patio or Walkway</option>
-                <option value="basement">Basement Floor</option>
-                <option value="commercial">Commercial or Warehouse</option>
-                <option value="other">Other / Not Sure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="c-timeline">Timeline *</label>
-              <select class="form-select" id="c-timeline" name="timeline" required>
-                <option value="">How soon are you looking to start?</option>
-                <option value="asap">As soon as possible</option>
-                <option value="month">Within the next month</option>
-                <option value="1-3months">1–3 months out</option>
-                <option value="researching">Just researching for now</option>
-              </select>
+            <div class="form-inline-row">
+              <div class="form-group">
+                <label class="form-label" for="c-project-type">Project Type *</label>
+                <select class="form-select" id="c-project-type" name="project_type" required>
+                  <option value="">Select type…</option>
+                  <option value="garage-1car">1-Car Garage (~200 sq ft)</option>
+                  <option value="garage-2car">2-Car Garage (~400 sq ft)</option>
+                  <option value="garage-3car">3-Car+ Garage (600+ sq ft)</option>
+                  <option value="patio">Patio or Walkway</option>
+                  <option value="basement">Basement Floor</option>
+                  <option value="commercial">Commercial or Warehouse</option>
+                  <option value="other">Other / Not Sure</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="c-timeline">Timeline *</label>
+                <select class="form-select" id="c-timeline" name="timeline" required>
+                  <option value="">How soon?</option>
+                  <option value="asap">As soon as possible</option>
+                  <option value="month">Within the next month</option>
+                  <option value="1-3months">1–3 months out</option>
+                  <option value="researching">Just researching</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="c-message">Additional Notes</label>
-              <textarea class="form-input form-textarea" id="c-message" name="message" placeholder="Any questions or special notes about your project…"></textarea>
+              <textarea class="form-input form-textarea" id="c-message" name="message" placeholder="Any questions or special notes about your project…" style="height: 90px;"></textarea>
             </div>
-            <button type="submit" class="btn btn-full" style="height:56px; font-family:'Montserrat',sans-serif; font-size:17px; border-radius:8px;">
+            <button type="submit" class="btn btn-full" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px;">
               SEND MY FREE ESTIMATE REQUEST →
             </button>
             <p class="form-submit-note">🔒 Your information is 100% private and never sold.</p>
