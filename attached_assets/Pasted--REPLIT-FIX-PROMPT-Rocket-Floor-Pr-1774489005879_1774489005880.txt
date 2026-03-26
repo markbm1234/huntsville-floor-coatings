@@ -1,0 +1,359 @@
+================================================================
+REPLIT FIX PROMPT — Rocket Floor Pros
+Apply ALL of the following fixes to the existing site files.
+Do not rebuild from scratch. Edit the existing files only.
+================================================================
+
+================================================================
+FIX 1 — CRITICAL: Form validation bug (index.html, line ~641)
+================================================================
+In index.html, find this line:
+  const name = document.getElementById('name');
+
+Replace it with:
+  const name = document.getElementById('first-name');
+
+Then find this line in the fields array below it:
+  { el: name, err: 'name-err', check: v => v.trim() !== '' },
+
+Make sure it still references the variable "name" (which now
+correctly points to first-name). No change needed to this line
+itself — just confirm it's still there.
+
+================================================================
+FIX 2 — CRITICAL: Fix mini-form data transfer bug (components.js)
+================================================================
+In components.js, in the initMiniForm() function, find:
+  const mainName = document.getElementById('name');
+
+Replace with:
+  const mainName = document.getElementById('first-name');
+
+================================================================
+FIX 3 — CRITICAL: Replace Formspree placeholder (all files)
+================================================================
+In EVERY file across the entire project, find ALL occurrences of:
+  REPLACE_WITH_YOUR_ID
+
+Replace every single one with:
+  xpwqrjkl
+
+(Note to user: replace xpwqrjkl with your REAL Formspree ID
+ after creating your account at formspree.io. There are 21
+ total occurrences across index.html, contact.html, the location
+ pages, and components.js.)
+
+================================================================
+FIX 4 — SEO: Add missing blog posts to sitemap.xml
+================================================================
+In sitemap.xml, find this block:
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-post.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+Replace it with ALL of the following:
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-post.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-epoxy-vs-polyaspartic.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-prepare-garage.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-5-signs.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-cleaning.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/about.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+================================================================
+FIX 5 — SEO: Add og:image to every page
+================================================================
+In EVERY HTML file (index.html, blog.html, blog-post.html,
+blog-epoxy-vs-polyaspartic.html, blog-prepare-garage.html,
+blog-5-signs.html, blog-cleaning.html, madison-al.html,
+decatur-al.html, athens-al.html, about.html, contact.html,
+privacy.html), find the existing og:title meta tag line
+which looks like:
+  <meta property="og:title" content="...">
+
+Add these three lines IMMEDIATELY AFTER it:
+  <meta property="og:image" content="https://www.rocketfloorpros.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://www.rocketfloorpros.com/opengraph.jpg">
+
+================================================================
+FIX 6 — SEO: Add About and Contact to desktop navigation
+================================================================
+In EVERY HTML file, find the desktop nav block which looks like:
+  <nav class="main-nav">
+    <a href="index.html" ...>Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="blog.html" ...>Blog</a>
+    <a href="index.html#service-area">Areas</a>
+  </nav>
+
+Add two more links before </nav>:
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+
+On about.html, the About link should have class="active".
+On contact.html, the Contact link should have class="active".
+
+================================================================
+FIX 7 — CONSISTENCY: Convert index.html header to use components.js
+================================================================
+In index.html, find the entire hardcoded <header> block —
+it starts with:
+  <header class="site-header" id="site-header">
+
+And ends with:
+  </header>
+
+Replace the ENTIRE hardcoded header block with just this one line:
+  <div id="header-placeholder"></div>
+
+Then in the <script> block at the bottom of index.html, find:
+  document.getElementById('footer-placeholder').innerHTML = renderFooter();
+
+Add this line BEFORE it:
+  document.getElementById('header-placeholder').innerHTML = renderHeader('home');
+
+================================================================
+FIX 8 — CONVERSION: Pre-fill city on location page forms
+================================================================
+In madison-al.html, find the city input field:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Huntsville" required>
+
+Replace with:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Madison" value="Madison" required>
+
+Also find the form card title on madison-al.html:
+  <h3 class="form-card-title">Request Your Free Estimate</h3>
+
+Replace with:
+  <h3 class="form-card-title">Request Your Free Madison Estimate</h3>
+
+---
+
+In decatur-al.html, find the city input field:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Huntsville" required>
+
+Replace with:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Decatur" value="Decatur" required>
+
+Also find the form card title on decatur-al.html:
+  <h3 class="form-card-title">Request Your Free Estimate</h3>
+
+Replace with:
+  <h3 class="form-card-title">Request Your Free Decatur Estimate</h3>
+
+---
+
+In athens-al.html, find the city input field:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Huntsville" required>
+
+Replace with:
+  <input class="form-input" type="text" id="city" name="city" placeholder="Athens" value="Athens" required>
+
+Also find the form card title on athens-al.html:
+  <h3 class="form-card-title">Request Your Free Estimate</h3>
+
+Replace with:
+  <h3 class="form-card-title">Request Your Free Athens Estimate</h3>
+
+================================================================
+FIX 9 — CONVERSION: Add inline lead form to bottom of every blog post
+================================================================
+In EACH of these files: blog-post.html, blog-epoxy-vs-polyaspartic.html,
+blog-prepare-garage.html, blog-5-signs.html, blog-cleaning.html
+
+Find the closing </article> tag (or the end of the main article
+content, before any related posts section).
+
+Insert this complete block IMMEDIATELY BEFORE the related
+articles section or before </article>:
+
+  <div style="background: var(--blue-50); border: 1.5px solid var(--blue-300); border-radius: 12px; padding: 32px 28px; margin: 40px 0;">
+    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px;">Ready to Get a Quote for Your Garage?</h3>
+    <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--gray-700); margin-bottom: 20px;">Leave your name and phone number — we'll call you within the hour with a free estimate.</p>
+    <form class="simple-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <input type="hidden" name="_subject" value="Blog Lead - Rocket Floor Pros">
+      <input class="form-input" type="text" name="name" placeholder="Your name" required style="flex: 1; min-width: 160px;">
+      <input class="form-input" type="tel" name="phone" placeholder="(256) 555-0000" required style="flex: 1; min-width: 160px;">
+      <button type="submit" class="btn" style="white-space: nowrap;">GET FREE ESTIMATE</button>
+    </form>
+    <p style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--gray-400); margin-top: 10px; text-align: center;">🔒 Your info is private and never sold. Or call us: <a href="tel:2567124800" style="color: var(--blue-700);">(256) 712-4800</a></p>
+  </div>
+
+(Remember to replace REPLACE_WITH_YOUR_ID in this block too
+ with your real Formspree ID — same one from Fix 3.)
+
+================================================================
+FIX 10 — CONVERSION: Add cross-links to bottom of location pages
+================================================================
+In madison-al.html, find the closing </section> of the last
+content section (before the footer placeholder).
+
+Add this block before the footer placeholder div:
+
+  <section class="section" style="background: var(--gray-100);">
+    <div class="container" style="text-align: center;">
+      <span class="section-eyebrow">NEARBY AREAS</span>
+      <h2 class="section-title" style="margin-bottom: 24px;">We Also Serve These North Alabama Communities</h2>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="decatur-al.html" class="btn" style="background: white; color: var(--blue-700); border: 1.5px solid var(--blue-300);">Epoxy Flooring in Decatur, AL →</a>
+        <a href="athens-al.html" class="btn" style="background: white; color: var(--blue-700); border: 1.5px solid var(--blue-300);">Epoxy Flooring in Athens, AL →</a>
+        <a href="index.html#service-area" class="btn" style="background: white; color: var(--blue-700); border: 1.5px solid var(--blue-300);">All Service Areas →</a>
+      </div>
+    </div>
+  </section>
+
+Apply the same block to decatur-al.html and athens-al.html,
+adjusting the links so each page does NOT link to itself
+(e.g. decatur-al.html links to madison and athens, not decatur).
+
+================================================================
+FIX 11 — CONSISTENCY: Make copyright year dynamic
+================================================================
+In components.js, in the renderFooter() function, find:
+  © 2025 Rocket Floor Pros
+
+Replace with:
+  © ${new Date().getFullYear()} Rocket Floor Pros
+
+================================================================
+FIX 12 — SEO: Add all 8 FAQ questions to FAQPage schema
+================================================================
+In index.html, find the FAQPage JSON-LD schema block in <head>.
+It currently only has 4 questions. Replace the entire FAQPage
+schema with this complete version containing all 8 questions:
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does epoxy garage floor coating cost in Huntsville?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Most residential garages in Huntsville run $2,400–$5,500 depending on size, floor condition, and coating type. A standard two-car garage with epoxy flake coating typically costs $2,800–$3,400. We provide a free on-site estimate with exact pricing before any work begins."}
+      },
+      {
+        "@type": "Question",
+        "name": "How long does epoxy floor installation take?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Most residential garages are completed in a single day. We arrive at 7:30–8am and finish by early afternoon. You can walk on the floor within 6 hours of completion and park your vehicle on it the following morning."}
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between epoxy and polyaspartic?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Epoxy is our most affordable system — durable, attractive, and long-lasting. Polyaspartic is our premium offering: it cures 4x faster, is UV-stable and won't yellow in sunlight, and is significantly harder and more scratch-resistant. We recommend polyaspartic for garages with sun-facing doors, commercial spaces, or anyone who wants the best possible finish."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to be home during the installation?",
+        "acceptedAnswer": {"@type": "Answer", "text": "You'll need to be home at the start so we can walk through the scope and confirm details. After that, most customers go about their day. We'll send you a photo and text when we're finished."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I prepare my garage before the install?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Remove everything from the garage floor — vehicles, storage boxes, floor-mounted shelving if possible. We handle all concrete surface preparation including grinding, crack repair, and cleaning. We'll confirm specific prep requirements when we schedule your appointment."}
+      },
+      {
+        "@type": "Question",
+        "name": "What if my concrete has cracks or oil stains?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Not a problem. Crack filling and surface prep are included in our standard installation process. We grind the concrete, fill cracks with 100% solid epoxy filler, and remove oils and stains before any coating is applied. The result bonds directly to the concrete."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a warranty on the floor coating?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes — all of our installations come with a lifetime warranty against peeling, flaking, or delamination when the floor is properly maintained per our care guidelines. We'll walk you through maintenance at the end of your installation."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do you serve Madison, Decatur, and Athens, Alabama?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. We serve the entire North Alabama region including Huntsville, Madison, Decatur, Athens, Harvest, Hampton Cove, Meridianville, Florence, and everywhere in between. If you're within 60 miles of Huntsville, we most likely cover your area. Call us to confirm."}
+      }
+    ]
+  }
+  </script>
+
+================================================================
+FIX 13 — MOBILE: Fix gallery grid span on small screens
+================================================================
+In styles.css, find the gallery section's mobile media query.
+It should be inside a @media (max-width: 767px) block.
+
+Inside that block, add or update:
+  .gallery-item[style*="grid-column:span 2"],
+  .gallery-item[style*="grid-column: span 2"] {
+    grid-column: span 1 !important;
+    height: 220px !important;
+  }
+
+If there is already a gallery mobile rule, add the span
+override to it rather than creating a duplicate.
+
+================================================================
+FIX 14 — MOBILE: Ensure form inline rows stack on mobile
+================================================================
+In styles.css, find the @media (max-width: 767px) block.
+
+Inside it, add or confirm these rules exist:
+  .form-inline-row {
+    flex-direction: column;
+  }
+  .form-inline-row-3 {
+    flex-direction: column;
+  }
+
+If these rules already exist in the mobile block, no change
+needed. If they are missing, add them.
+
+================================================================
+POST-FIX VERIFICATION CHECKLIST
+================================================================
+After making all the above changes, verify the following:
+
+1. Submit a test lead on index.html — confirm you receive
+   the form email AND the success message shows on screen.
+
+2. Check the browser console (F12 > Console) after submitting
+   the form — there should be zero JavaScript errors.
+
+3. Open the site on a mobile device or at 375px width —
+   confirm the form fields stack vertically, not side by side.
+
+4. Confirm the gallery large image does not overflow on mobile.
+
+5. Check that About and Contact appear in the desktop nav
+   on every page.
+
+6. Validate sitemap.xml by opening it directly — it should
+   show all pages including the 4 new blog entries.
+
+================================================================
+END OF FIX PROMPT
+================================================================

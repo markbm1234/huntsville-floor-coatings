@@ -16,6 +16,26 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.rocketfloorpros.com/blog-epoxy-vs-polyaspartic.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-prepare-garage.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-5-signs.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.rocketfloorpros.com/blog-cleaning.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.rocketfloorpros.com/madison-al.html</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>

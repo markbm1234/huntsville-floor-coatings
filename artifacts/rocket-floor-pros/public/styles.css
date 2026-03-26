@@ -2525,3 +2525,22 @@ body {
 .mb-16 { margin-bottom: 16px; }
 .mb-24 { margin-bottom: 24px; }
 .mb-32 { margin-bottom: 32px; }
+
+/* ===========================
+   MOBILE FIXES (767px)
+=========================== */
+@media (max-width: 767px) {
+  .gallery-item[style*="grid-column:span 2"],
+  .gallery-item[style*="grid-column: span 2"] {
+    grid-column: span 1 !important;
+    height: 220px !important;
+  }
+  .form-inline-row {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+  .form-inline-row-3 {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+}

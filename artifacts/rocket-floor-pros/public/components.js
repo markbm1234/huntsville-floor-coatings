@@ -12,6 +12,8 @@ function renderHeader(activePage) {
     { href: 'index.html#reviews', label: 'Reviews', key: 'reviews' },
     { href: 'blog.html', label: 'Blog', key: 'blog' },
     { href: 'index.html#service-area', label: 'Areas', key: 'areas' },
+    { href: 'about.html', label: 'About', key: 'about' },
+    { href: 'contact.html', label: 'Contact', key: 'contact' },
   ];
 
   const navLinks = pages.map(p =>
@@ -111,7 +113,7 @@ function renderFooter() {
       </div>
       <div class="footer-bottom">
         <div class="container">
-          <p>© 2025 Rocket Floor Pros · Huntsville, AL</p>
+          <p>© ${new Date().getFullYear()} Rocket Floor Pros &middot; Huntsville, AL</p>
           <p>This site is operated by an independent lead generation service.</p>
         </div>
       </div>
@@ -186,7 +188,7 @@ function renderMainForm(idSuffix) {
         <p class="form-success-body">A specialist will call you within the next 60 minutes.<br>Keep your phone nearby — we may call or text.</p>
         <a href="#faq" class="blue-link">While you wait, read our most common questions below →</a>
       </div>
-      <form id="main-form${idSuffix}" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+      <form id="main-form${idSuffix}" action="https://formspree.io/f/xpwqrjkl" method="POST">
         <input type="hidden" name="_subject" value="New Lead - Rocket Floor Pros">
 
         <div class="form-inline-row">
@@ -433,7 +435,7 @@ function initMiniForm() {
     e.preventDefault();
     const miniName = document.getElementById('mini-name');
     const miniPhone = document.getElementById('mini-phone');
-    const mainName = document.getElementById('name');
+    const mainName = document.getElementById('first-name');
     const mainPhone = document.getElementById('phone');
     if (mainName && miniName) mainName.value = miniName.value;
     if (mainPhone && miniPhone) mainPhone.value = miniPhone.value;
@@ -451,7 +453,7 @@ function initSimpleForms() {
       if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
       try {
         const data = new FormData(form);
-        const response = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_ID', {
+        const response = await fetch('https://formspree.io/f/xpwqrjkl', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
