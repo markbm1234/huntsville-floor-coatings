@@ -30,6 +30,8 @@ router.post("/subscribe", async (req, res) => {
   if (body.timeline) fields.timeline = body.timeline;
   if (body.source) fields.source = body.source;
   if (body.message) fields.message = body.message;
+  const ownerVal = body.owner || body["property-owner"];
+  if (ownerVal) fields["property-owner"] = ownerVal;
 
   if (!emailValue) {
     logger.info({ name: fullName }, "Lead captured (no email — skipped MailerLite)");
