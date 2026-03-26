@@ -282,14 +282,102 @@ function renderMainForm(idSuffix) {
         <button type="submit" class="btn btn-full" id="submit-btn${idSuffix}" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px; margin-top:8px;">
           GET MY FREE ESTIMATE →
         </button>
-        <p class="form-submit-note">🔒 Your information is 100% private and never sold.</p>
+        <p class="form-submit-note">🔒 By submitting, you agree to be contacted by phone, email, or SMS about your estimate. <a href="privacy.html" style="color:var(--blue-700);">Privacy Policy</a>.</p>
       </form>
     </div>
   `;
 }
 
 // ===========================
-// SHARED JS BEHAVIORS
+// ANALYTICS HELPERS
+// ===========================
+
+function pushEvent(eventName, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+}
+
+// ===========================
+// UTM / TRACKING CAPTURE
+// ===========================
+
+function getTrackingData() {
+  const params = new URLSearchParams(window.location.search);
+  const stored = {};
+  try { Object.assign(stored, JSON.parse(sessionStorage.getItem('rfp_utm') || '{}')); } catch(e) {}
+
+  const utm = {
+    utm_source:   params.get('utm_source')   || stored.utm_source   || '',
+    utm_medium:   params.get('utm_medium')   || stored.utm_medium   || '',
+    utm_campaign: params.get('utm_campaign') || stored.utm_campaign || '',
+    utm_term:     params.get('utm_term')     || stored.utm_term     || '',
+    utm_content:  params.get('utm_content')  || stored.utm_content  || '',
+    gclid:        params.get('gclid')        || stored.gclid        || '',
+    fbclid:       params.get('fbclid')       || stored.fbclid       || '',
+  };
+
+  if (params.get('utm_source')) {
+    try { sessionStorage.setItem('rfp_utm', JSON.stringify(utm)); } catch(e) {}
+  }
+
+  return Object.assign(utm, {
+    landing_page:  sessionStorage.getItem('rfp_landing') || window.location.href,
+    referrer:      document.referrer || '',
+    page_url:      window.location.href,
+    page_title:    document.title,
+    device_type:   /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
+    timestamp:     new Date().toISOString(),
+  });
+}
+
+function injectTrackingFields(form) {
+  const td = getTrackingData();
+  const hidden = [
+    'utm_source','utm_medium','utm_campaign','utm_term','utm_content',
+    'gclid','fbclid','landing_page','referrer','page_url','page_title',
+    'device_type','timestamp'
+  ];
+  hidden.forEach(function(key) {
+    if (!form.querySelector('[name="' + key + '"]') && td[key]) {
+      const inp = document.createElement('input');
+      inp.type = 'hidden';
+      inp.name = key;
+      inp.value = td[key];
+      form.appendChild(inp);
+    }
+  });
+}
+
+function recordLanding() {
+  try {
+    if (!sessionStorage.getItem('rfp_landing')) {
+      sessionStorage.setItem('rfp_landing', window.location.href);
+    }
+  } catch(e) {}
+}
+
+// ===========================
+// PHONE INPUT MASKING
+// ===========================
+
+function applyPhoneMask(input) {
+  if (!input || input.dataset.masked) return;
+  input.dataset.masked = '1';
+  input.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 10);
+    if (v.length >= 7) {
+      v = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+    } else if (v.length >= 4) {
+      v = '(' + v.slice(0,3) + ') ' + v.slice(3);
+    } else if (v.length > 0) {
+      v = '(' + v;
+    }
+    this.value = v;
+  });
+}
+
+// ===========================
+// HEADER
 // ===========================
 
 function initHeader() {
@@ -317,6 +405,10 @@ function initHeader() {
   }
 }
 
+// ===========================
+// FAQ
+// ===========================
+
 function toggleFAQ(index) {
   const item = document.getElementById('faq-' + index);
   if (!item) return;
@@ -324,6 +416,10 @@ function toggleFAQ(index) {
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+// ===========================
+// OWNER RADIO
+// ===========================
 
 function handleOwner(value, suffix) {
   suffix = suffix || '';
@@ -340,20 +436,43 @@ function handleOwner(value, suffix) {
   }
 }
 
+// ===========================
+// VALIDATION
+// ===========================
+
 function validatePhone(phone) {
-  return /[\d\s\-\(\)]{7,}/.test(phone);
+  return /[\d]{7,}/.test(phone.replace(/\D/g, ''));
 }
+
+// ===========================
+// MAIN FORM (full estimate)
+// ===========================
 
 function initMainForm(suffix) {
   suffix = suffix || '';
   const form = document.getElementById('main-form' + suffix);
   if (!form) return;
 
+  // Inject tracking fields
+  injectTrackingFields(form);
+
+  // Phone masking
+  const phoneEl = document.getElementById('phone' + suffix);
+  if (phoneEl) applyPhoneMask(phoneEl);
+
+  // Track form start
+  let formStarted = false;
+  form.addEventListener('focusin', function() {
+    if (!formStarted) {
+      formStarted = true;
+      pushEvent('form_start', { form_id: 'main-form' + suffix });
+    }
+  }, { once: false });
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
     let valid = true;
 
-    const name = document.getElementById('name' + suffix);
     const phone = document.getElementById('phone' + suffix);
     const address = document.getElementById('address' + suffix);
     const projectType = document.getElementById('project-type' + suffix);
@@ -362,7 +481,6 @@ function initMainForm(suffix) {
     const ownerChecked = [...ownerRadios].some(r => r.checked);
 
     const fields = [
-      { el: name, err: 'name-err' + suffix, check: v => v.trim() !== '' },
       { el: phone, err: 'phone-err' + suffix, check: validatePhone },
       { el: address, err: 'address-err' + suffix, check: v => v.trim() !== '' },
       { el: projectType, err: 'project-err' + suffix, check: v => v !== '' },
@@ -414,15 +532,21 @@ function initMainForm(suffix) {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
       });
       if (response.ok) {
+        pushEvent('generate_lead', {
+          form_id: 'main-form' + suffix,
+          page_url: window.location.href,
+          page_title: document.title
+        });
         form.style.display = 'none';
         const success = document.getElementById('form-success' + suffix);
         success && success.classList.add('visible');
+        success && success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         throw new Error('Server error');
       }
     } catch (err) {
       if (submitBtn) {
-        submitBtn.textContent = 'SEND MY FREE ESTIMATE REQUEST →';
+        submitBtn.textContent = 'GET MY FREE ESTIMATE →';
         submitBtn.disabled = false;
       }
       alert('There was an issue submitting the form. Please call us directly at (256) 712-4800.');
@@ -430,9 +554,14 @@ function initMainForm(suffix) {
   });
 }
 
+// ===========================
+// MINI HERO FORM
+// ===========================
+
 function initMiniForm() {
   const miniForm = document.getElementById('mini-hero-form');
   if (!miniForm) return;
+  injectTrackingFields(miniForm);
   miniForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const miniName = document.getElementById('mini-name');
@@ -441,13 +570,31 @@ function initMiniForm() {
     const mainEmail = document.getElementById('email');
     if (mainName && miniName) mainName.value = miniName.value;
     if (mainEmail && miniEmail) mainEmail.value = miniEmail.value;
+    pushEvent('form_start', { form_id: 'main-form-from-mini' });
     const estimateForm = document.getElementById('estimate-form');
     if (estimateForm) estimateForm.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
+// ===========================
+// SIMPLE FORMS (location pages, blog, CTAs)
+// ===========================
+
 function initSimpleForms() {
   document.querySelectorAll('.simple-form').forEach(form => {
+    injectTrackingFields(form);
+
+    // Phone masking on any tel input
+    form.querySelectorAll('input[type="tel"]').forEach(applyPhoneMask);
+
+    let started = false;
+    form.addEventListener('focusin', function() {
+      if (!started) {
+        started = true;
+        pushEvent('form_start', { form_id: form.id || 'simple-form' });
+      }
+    });
+
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
@@ -457,13 +604,17 @@ function initSimpleForms() {
         const data = new FormData(form);
         const payload = {};
         data.forEach((val, key) => { payload[key] = val; });
-        payload.source = payload.source || form.closest('[id]') ? (form.closest('[id]') || {}).id || 'simple-form' : 'simple-form';
         const response = await fetch('/api/subscribe', {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
         });
         if (response.ok) {
+          pushEvent('generate_lead', {
+            form_id: form.id || 'simple-form',
+            page_url: window.location.href,
+            page_title: document.title
+          });
           form.innerHTML = '<p style="color: var(--success); font-family: Inter, sans-serif; font-weight:600; text-align:center; padding:20px 0;">✅ Request received! We\'ll call you within the hour.</p>';
         } else throw new Error();
       } catch {
@@ -473,6 +624,10 @@ function initSimpleForms() {
     });
   });
 }
+
+// ===========================
+// FADE IN
+// ===========================
 
 function initFadeIn() {
   const observer = new IntersectionObserver((entries) => {
@@ -485,24 +640,66 @@ function initFadeIn() {
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
 
+// ===========================
+// PHONE CLICK TRACKING
+// ===========================
+
 function initPhoneTracking() {
   document.querySelectorAll('a[href^="tel:"]').forEach(link => {
     link.addEventListener('click', () => {
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event: 'phone_click',
-          location: link.closest('[id]') ? link.closest('[id]').id : 'unknown'
-        });
-      }
+      pushEvent('phone_click', {
+        phone_number: '(256) 712-4800',
+        click_location: link.closest('[id]') ? link.closest('[id]').id : document.title
+      });
     });
   });
 }
 
+// ===========================
+// CTA BUTTON TRACKING
+// ===========================
+
+function initCTATracking() {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const label = btn.textContent.trim().slice(0, 50);
+      pushEvent('cta_click', { cta_label: label, page_url: window.location.href });
+    });
+  });
+}
+
+// ===========================
+// SCROLL DEPTH
+// ===========================
+
+function initScrollDepth() {
+  const milestones = [25, 50, 75, 90];
+  const fired = {};
+  window.addEventListener('scroll', function() {
+    const pct = Math.round(
+      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+    );
+    milestones.forEach(m => {
+      if (!fired[m] && pct >= m) {
+        fired[m] = true;
+        pushEvent('scroll_depth', { depth_pct: m, page_url: window.location.href });
+      }
+    });
+  }, { passive: true });
+}
+
+// ===========================
+// INIT ALL
+// ===========================
+
 function initAll(options) {
   options = options || {};
+  recordLanding();
   initHeader();
   initFadeIn();
   initPhoneTracking();
+  initCTATracking();
+  initScrollDepth();
   initSimpleForms();
   if (options.miniForm) initMiniForm();
   if (options.mainForm) initMainForm('');
