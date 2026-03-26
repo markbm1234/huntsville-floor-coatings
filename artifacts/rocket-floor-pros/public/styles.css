@@ -188,7 +188,9 @@ body {
 
 .site-header > .container {
   max-width: 100%;
+  width: 100%;
   padding: 0 28px;
+  box-sizing: border-box;
 }
 
 body {
