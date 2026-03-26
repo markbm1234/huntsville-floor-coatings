@@ -175,38 +175,71 @@
             <form id="madison-form" class="simple-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
               <input type="hidden" name="_subject" value="Madison AL Lead - Rocket Floor Pros">
               <input type="hidden" name="location" value="Madison, AL">
-              <div class="form-group">
-                <label class="form-label">First Name *</label>
-                <input class="form-input" type="text" name="name" placeholder="Your first name" required>
+              <div class="form-inline-row">
+                <div class="form-group">
+                  <label class="form-label">First Name *</label>
+                  <input class="form-input" type="text" name="first_name" placeholder="First name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name *</label>
+                  <input class="form-input" type="text" name="last_name" placeholder="Last name" required>
+                </div>
+              </div>
+              <div class="form-inline-row">
+                <div class="form-group">
+                  <label class="form-label">Phone *</label>
+                  <input class="form-input" type="tel" name="phone" placeholder="(256) 555-0000" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input class="form-input" type="email" name="email" placeholder="your@email.com">
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Phone Number *</label>
-                <input class="form-input" type="tel" name="phone" placeholder="(256) 555-0000" required>
-                <div class="form-helper">We'll call or text — whichever you prefer</div>
+                <label class="form-label">Street Address *</label>
+                <input class="form-input" type="text" name="address" placeholder="123 Main St" required>
               </div>
-              <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input class="form-input" type="email" name="email" placeholder="your@email.com">
+              <div class="form-inline-row-3">
+                <div class="form-group">
+                  <label class="form-label">City *</label>
+                  <input class="form-input" type="text" name="city" placeholder="Madison" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <input class="form-input" type="text" name="state" value="AL">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Zip *</label>
+                  <input class="form-input" type="text" name="zip" placeholder="35758" required>
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Property Address in Madison *</label>
-                <input class="form-input" type="text" name="address" placeholder="Street address, Madison, AL" required>
+              <div class="form-inline-row">
+                <div class="form-group">
+                  <label class="form-label">Project Type *</label>
+                  <select class="form-select" name="project_type" required>
+                    <option value="">Select type…</option>
+                    <option value="garage-1car">1-Car Garage (~200 sq ft)</option>
+                    <option value="garage-2car">2-Car Garage (~400 sq ft)</option>
+                    <option value="garage-3car">3-Car+ Garage (600+ sq ft)</option>
+                    <option value="patio">Patio or Walkway</option>
+                    <option value="basement">Basement Floor</option>
+                    <option value="commercial">Commercial / Warehouse</option>
+                    <option value="other">Other / Not Sure</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Timeline *</label>
+                  <select class="form-select" name="timeline" required>
+                    <option value="">How soon?</option>
+                    <option value="asap">As soon as possible</option>
+                    <option value="month">Within a month</option>
+                    <option value="1-3months">1–3 months</option>
+                    <option value="researching">Just researching</option>
+                  </select>
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Type of Project *</label>
-                <select class="form-select" name="project_type" required>
-                  <option value="">Select your project type…</option>
-                  <option value="garage-1car">Garage Floor (1-car) · ~200 sq ft</option>
-                  <option value="garage-2car">Garage Floor (2-car) · ~400 sq ft</option>
-                  <option value="garage-3car">Garage Floor (3-car or larger) · 600+ sq ft</option>
-                  <option value="patio">Patio or Walkway</option>
-                  <option value="basement">Basement Floor</option>
-                  <option value="commercial">Commercial or Warehouse</option>
-                  <option value="other">Other / Not Sure</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-full" style="height:56px; font-family:'Montserrat',sans-serif; font-size:17px; border-radius:8px; margin-top:8px;">
-                SEND MY FREE ESTIMATE REQUEST →
+              <button type="submit" class="btn btn-full" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px; margin-top:8px;">
+                GET MY FREE ESTIMATE →
               </button>
               <p class="form-submit-note">🔒 Your information is 100% private and never sold.</p>
             </form>

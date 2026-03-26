@@ -34,6 +34,7 @@ body {
   color: var(--gray-900);
   background: var(--white);
   line-height: 1.5;
+  padding-top: 68px;
 }
 
 @media (max-width: 767px) {
@@ -166,16 +167,18 @@ body {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 /* ===========================
    HEADER
 =========================== */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   height: 68px;
   background: white;
   border-bottom: 1px solid var(--border);
@@ -341,7 +344,11 @@ body {
     display: flex;
   }
   .site-header {
-    position: sticky;
+    position: fixed;
+  }
+  .form-inline-row,
+  .form-inline-row-3 {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -992,6 +999,18 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: start;
+}
+
+.form-inline-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-inline-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 72px 90px;
+  gap: 12px;
 }
 
 .form-left-title {

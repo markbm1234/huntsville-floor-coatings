@@ -188,54 +188,81 @@ function renderMainForm(idSuffix) {
       </div>
       <form id="main-form${idSuffix}" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
         <input type="hidden" name="_subject" value="New Lead - Rocket Floor Pros">
-        <div class="form-group">
-          <label class="form-label" for="name${idSuffix}">First Name *</label>
-          <input class="form-input" type="text" id="name${idSuffix}" name="name" placeholder="Your first name" required>
-          <div class="form-error-msg" id="name-err${idSuffix}">Please enter your name.</div>
+
+        <div class="form-inline-row">
+          <div class="form-group">
+            <label class="form-label" for="first-name${idSuffix}">First Name *</label>
+            <input class="form-input" type="text" id="first-name${idSuffix}" name="first_name" placeholder="First name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="last-name${idSuffix}">Last Name *</label>
+            <input class="form-input" type="text" id="last-name${idSuffix}" name="last_name" placeholder="Last name" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="phone${idSuffix}">Phone Number *</label>
-          <input class="form-input" type="tel" id="phone${idSuffix}" name="phone" placeholder="(256) 555-0000" required>
-          <div class="form-helper">We'll call or text — whichever you prefer</div>
-          <div class="form-error-msg" id="phone-err${idSuffix}">Please enter a valid phone number.</div>
+
+        <div class="form-inline-row">
+          <div class="form-group">
+            <label class="form-label" for="phone${idSuffix}">Phone *</label>
+            <input class="form-input" type="tel" id="phone${idSuffix}" name="phone" placeholder="(256) 555-0000" required>
+            <div class="form-error-msg" id="phone-err${idSuffix}">Please enter a valid phone number.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email${idSuffix}">Email</label>
+            <input class="form-input" type="email" id="email${idSuffix}" name="email" placeholder="your@email.com">
+          </div>
         </div>
+
         <div class="form-group">
-          <label class="form-label" for="email${idSuffix}">Email Address</label>
-          <input class="form-input" type="email" id="email${idSuffix}" name="email" placeholder="your@email.com">
-          <div class="form-helper">Optional — for estimate confirmation</div>
+          <label class="form-label" for="address${idSuffix}">Street Address *</label>
+          <input class="form-input" type="text" id="address${idSuffix}" name="address" placeholder="123 Main St" required>
+          <div class="form-error-msg" id="address-err${idSuffix}">Please enter your address.</div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="address${idSuffix}">Property Address *</label>
-          <input class="form-input" type="text" id="address${idSuffix}" name="address" placeholder="Street address, City" required>
-          <div class="form-error-msg" id="address-err${idSuffix}">Please enter your property address.</div>
+
+        <div class="form-inline-row-3">
+          <div class="form-group">
+            <label class="form-label" for="city${idSuffix}">City *</label>
+            <input class="form-input" type="text" id="city${idSuffix}" name="city" placeholder="Huntsville" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="state${idSuffix}">State</label>
+            <input class="form-input" type="text" id="state${idSuffix}" name="state" placeholder="AL" value="AL">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="zip${idSuffix}">Zip *</label>
+            <input class="form-input" type="text" id="zip${idSuffix}" name="zip" placeholder="35801" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="project-type${idSuffix}">Type of Project *</label>
-          <select class="form-select" id="project-type${idSuffix}" name="project_type" required>
-            <option value="">Select your project type…</option>
-            <option value="garage-1car">Garage Floor (1-car) · ~200 sq ft</option>
-            <option value="garage-2car">Garage Floor (2-car) · ~400 sq ft</option>
-            <option value="garage-3car">Garage Floor (3-car or larger) · 600+ sq ft</option>
-            <option value="patio">Patio or Walkway</option>
-            <option value="basement">Basement Floor</option>
-            <option value="commercial">Commercial or Warehouse</option>
-            <option value="other">Other / Not Sure</option>
-          </select>
-          <div class="form-error-msg" id="project-err${idSuffix}">Please select a project type.</div>
+
+        <div class="form-inline-row">
+          <div class="form-group">
+            <label class="form-label" for="project-type${idSuffix}">Project Type *</label>
+            <select class="form-select" id="project-type${idSuffix}" name="project_type" required>
+              <option value="">Select type…</option>
+              <option value="garage-1car">1-Car Garage (~200 sq ft)</option>
+              <option value="garage-2car">2-Car Garage (~400 sq ft)</option>
+              <option value="garage-3car">3-Car+ Garage (600+ sq ft)</option>
+              <option value="patio">Patio or Walkway</option>
+              <option value="basement">Basement Floor</option>
+              <option value="commercial">Commercial / Warehouse</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+            <div class="form-error-msg" id="project-err${idSuffix}">Please select a type.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="timeline${idSuffix}">Timeline *</label>
+            <select class="form-select" id="timeline${idSuffix}" name="timeline" required>
+              <option value="">How soon?</option>
+              <option value="asap">As soon as possible</option>
+              <option value="month">Within a month</option>
+              <option value="1-3months">1–3 months</option>
+              <option value="researching">Just researching</option>
+            </select>
+            <div class="form-error-msg" id="timeline-err${idSuffix}">Please select a timeline.</div>
+          </div>
         </div>
+
         <div class="form-group">
-          <label class="form-label" for="timeline${idSuffix}">Timeline *</label>
-          <select class="form-select" id="timeline${idSuffix}" name="timeline" required>
-            <option value="">How soon are you looking to start?</option>
-            <option value="asap">As soon as possible</option>
-            <option value="month">Within the next month</option>
-            <option value="1-3months">1–3 months out</option>
-            <option value="researching">Just researching for now</option>
-          </select>
-          <div class="form-error-msg" id="timeline-err${idSuffix}">Please select a timeline.</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Are you the property owner? *</label>
+          <label class="form-label">Property owner? *</label>
           <div class="radio-group">
             <label class="radio-option">
               <input type="radio" name="owner${idSuffix}" value="owner" onchange="handleOwner('owner', '${idSuffix}')"> Yes, I own this property
@@ -245,12 +272,13 @@ function renderMainForm(idSuffix) {
             </label>
           </div>
           <div class="renter-warning" id="renter-warning${idSuffix}">
-            ⚠️ Our installations require property owner approval. If you'd like, we can contact you once you've confirmed with your landlord.
+            ⚠️ Our installations require property owner approval.
           </div>
           <div class="form-error-msg" id="owner-err${idSuffix}">Please select an option.</div>
         </div>
-        <button type="submit" class="btn btn-full" id="submit-btn${idSuffix}" style="height:56px; font-family: 'Montserrat', sans-serif; font-size:17px; border-radius:8px; margin-top:8px;">
-          SEND MY FREE ESTIMATE REQUEST →
+
+        <button type="submit" class="btn btn-full" id="submit-btn${idSuffix}" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px; margin-top:8px;">
+          GET MY FREE ESTIMATE →
         </button>
         <p class="form-submit-note">🔒 Your information is 100% private and never sold.</p>
       </form>
