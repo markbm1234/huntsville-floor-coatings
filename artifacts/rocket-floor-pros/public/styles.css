@@ -43,9 +43,9 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
 }
 
 .section {
@@ -1458,10 +1458,9 @@ body {
    HERO SECTION
 =========================== */
 .hero {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 40px 0;
+  align-items: flex-start;
+  padding: 48px 0 72px;
   background: white;
 }
 
