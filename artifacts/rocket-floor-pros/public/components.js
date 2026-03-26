@@ -436,11 +436,11 @@ function initMiniForm() {
   miniForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const miniName = document.getElementById('mini-name');
-    const miniPhone = document.getElementById('mini-phone');
+    const miniEmail = document.getElementById('mini-email');
     const mainName = document.getElementById('first-name');
-    const mainPhone = document.getElementById('phone');
+    const mainEmail = document.getElementById('email');
     if (mainName && miniName) mainName.value = miniName.value;
-    if (mainPhone && miniPhone) mainPhone.value = miniPhone.value;
+    if (mainEmail && miniEmail) mainEmail.value = miniEmail.value;
     const estimateForm = document.getElementById('estimate-form');
     if (estimateForm) estimateForm.scrollIntoView({ behavior: 'smooth' });
   });
