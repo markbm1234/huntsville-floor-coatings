@@ -13,7 +13,37 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="header-placeholder"></div>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span class="logo-name"><span class="logo-dot"></span>ROCKET FLOOR PROS</span>
+          <span class="logo-tagline">Huntsville's Garage Floor Specialists</span>
+        </a>
+        <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="index.html#reviews">Reviews</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#service-area" class="active">Areas</a>
+        </nav>
+        <div class="header-right">
+          <a href="tel:2567124800" class="header-phone">(256) 712-4800</a>
+          <a href="#estimate-form" class="btn header-cta">FREE ESTIMATE</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a><a href="index.html#services">Services</a>
+      <a href="index.html#gallery">Gallery</a><a href="index.html#reviews">Reviews</a>
+      <a href="blog.html">Blog</a><a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:2567124800" class="mobile-phone">(256) 712-4800</a>
+      <a href="#estimate-form" class="btn" style="text-align:center;">GET FREE ESTIMATE</a>
+    </nav>
+  </header>
 
   <section class="hero-compact">
     <div class="container">
@@ -240,7 +270,7 @@
 
   <script src="components.js"></script>
   <script>
-    document.getElementById('header-placeholder').innerHTML = renderHeader();
+    // header is hardcoded in HTML - no injection needed
     document.getElementById('footer-placeholder').innerHTML = renderFooter();
     document.getElementById('faq-list').innerHTML = renderFAQ();
     initAll();

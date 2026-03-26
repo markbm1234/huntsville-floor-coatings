@@ -173,7 +173,7 @@ body {
    HEADER
 =========================== */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -184,6 +184,10 @@ body {
   display: flex;
   align-items: center;
   transition: box-shadow 0.2s;
+}
+
+body {
+  padding-top: 68px;
 }
 
 .site-header.scrolled {
@@ -341,9 +345,6 @@ body {
   }
   .hamburger {
     display: flex;
-  }
-  .site-header {
-    position: sticky;
   }
   .form-inline-row,
   .form-inline-row-3 {
