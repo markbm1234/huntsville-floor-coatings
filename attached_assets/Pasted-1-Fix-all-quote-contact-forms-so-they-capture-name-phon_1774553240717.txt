@@ -1,0 +1,310 @@
+1) Fix all quote/contact forms so they capture name, phone, and email correctly
+Problem
+
+Some location page forms currently appear to use:
+
+type="email" for the phone field
+name="email" more than once
+
+This will likely cause:
+
+phone numbers not being captured properly
+bad lead records
+MailerLite mapping issues
+lower close rates because phone follow-up is critical
+Required fix
+
+On every form across the site, make sure these fields exist and are mapped consistently:
+
+Name
+type="text"
+name="name"
+required
+Phone
+type="tel"
+name="phone"
+required
+Email
+type="email"
+name="email"
+required
+Important
+
+Because MailerLite requires email, email should stay required, but phone should also be required and stored separately.
+
+Also add
+input masking or formatting for phone if possible
+example placeholder like (256) 555-1234
+server-side validation too, not just client-side
+Audit all forms including
+homepage quote form
+contact page
+mobile CTA/contact form
+Madison page
+Decatur page
+Athens page
+any popups/sliders/sticky forms
+any hidden or alternate quote forms
+2) Standardize the lead payload sent to MailerLite / backend
+
+For every form submission, send/store these fields consistently:
+
+name
+phone
+email
+city
+service
+message
+page_url
+page_title
+source
+medium
+campaign
+gclid
+fbclid
+referrer
+device_type
+timestamp
+Notes
+Email is needed for MailerLite insertion
+Phone is needed for sales follow-up and lead resale value
+Hidden fields should capture source data automatically
+If MailerLite custom fields exist, map phone/city/service there
+3) Add hidden tracking fields to all forms
+
+Please capture and pass these hidden values on submission:
+
+utm_source
+utm_medium
+utm_campaign
+utm_term
+utm_content
+gclid
+fbclid
+landing_page
+referrer
+city_page
+service_page
+
+This is critical so we can later know:
+
+which ads worked
+which keywords/pages generated leads
+which city converts best
+which traffic source makes money
+4) Add a proper thank-you flow after form submission
+
+Right now, if forms only submit inline, we need better conversion tracking.
+
+Please implement :
+
+a clear success state with tracking event firing
+Requirements
+
+Track successful form submissions in:
+
+GA4
+Google Ads
+Meta Pixel if installed
+Suggested event name
+generate_lead
+or quote_form_submit
+
+If possible, redirect by source page with parameters so we know where lead came from.
+
+5) Install full analytics/tracking stack
+
+Please confirm and fully install:
+
+Google Tag Manager
+GA4
+Google Search Console verification
+Google Ads conversion tracking
+Meta Pixel if we plan to run Facebook ads
+Track events for:
+form submission
+form start
+phone number click
+CTA button click
+scroll depth
+city page visit
+thank-you page view
+
+This is mandatory for serious lead generation.
+
+6) Add click-to-call tracking everywhere
+
+Phone calls are likely the highest-value lead action.
+
+Please:
+make all phone numbers tap-to-call
+track clicks as GA4/GTM events
+add call tracking compatibility if we swap in tracking numbers later
+Best practice
+
+Use one consistent phone number component so it can later support:
+
+dynamic number insertion
+source-based call tracking
+paid ads attribution
+7) Fix page-level SEO metadata on every page
+
+Please audit all pages and ensure each has unique:
+
+<title>
+meta description
+canonical URL
+Open Graph title
+Open Graph description
+Open Graph URL
+Twitter title/description/image
+Important
+
+Some pages appeared to reuse incorrect social metadata from other pages. Please fix that.
+
+Every page should have its own correct metadata, especially:
+
+homepage
+about
+contact
+privacy
+service pages
+city pages
+blog posts
+8) Improve homepage SEO and local intent
+
+Please update the homepage to better target local search and conversions.
+
+Goals
+stronger Huntsville / North Alabama relevance
+clearer floor coating service intent
+better alignment with search phrases people actually use
+Suggestions
+
+Work in phrases naturally like:
+
+garage floor coating Huntsville AL
+epoxy floor coating Huntsville
+polyaspartic floor coating North Alabama
+garage floor coatings in Huntsville, Madison, Decatur, and Athens
+
+Do this naturally, not spammy.
+
+Also
+
+Move strongest trust/CTA content higher on mobile.
+
+
+11.Review all numerical/statistical claims such as:
+
+number of projects
+star ratings
+review counts
+BBB claims
+warranty claims
+“#1 rated” language
+
+Make sure these are accurate, supportable, and consistent. If not, soften them.
+
+12) Improve mobile conversion performance
+
+Please optimize mobile pages for lead generation.
+
+Focus on:
+less vertical clutter above the fold
+visible CTA faster
+shorter first form section
+larger tap targets
+sticky call / quote button
+trust proof earlier on mobile
+better spacing and readability
+
+This site will likely get a lot of mobile traffic from ads and local search, so mobile conversion is critical.
+
+13) Compress and optimize all large images
+
+Several images appear heavier than they should be.
+
+Please:
+convert large PNG/JPG files to WebP where appropriate
+resize images to display size
+lazy-load below-the-fold images
+set width and height attributes
+keep hero images optimized for mobile
+Goal
+
+Improve page speed, especially on mobile.
+
+14) Improve internal linking structure
+
+Please strengthen internal links across the site.
+
+Recommended structure
+homepage links to all main city pages
+city pages link to service pages
+service pages link to related cities
+blog posts link to service + city pages
+footer links to top services and locations
+
+This helps SEO and user flow.
+
+15) Add/verify schema markup
+
+Please audit and improve schema.
+
+Add where appropriate
+LocalBusiness schema
+Service schema
+FAQ schema only where visible FAQ content exists
+Article schema on blog posts
+Breadcrumb schema on internal pages
+
+Also validate schema so there are no errors or misleading review markup.
+
+16) Add compliance language near submit buttons
+
+Since this is a lead-gen site, please add proper consent language.
+
+Suggested areas
+
+Near all forms and CTA submits, include language that covers:
+
+agreeing to be contacted
+phone/email/SMS follow-up if applicable
+privacy policy link
+
+If this site may route leads to local contractors, disclosure should reflect that.
+
+17) Prepare site for paid ads landing pages
+
+Please create the ability to build ad-specific landing pages separate from standard SEO pages.
+
+Requirements
+reduced navigation
+strong local headline
+short form
+click-to-call
+trust proof
+source tracking
+fast loading
+keyword-to-page alignment
+Priority ad landing pages
+Garage Floor Coating Huntsville
+Polyaspartic Garage Floors Huntsville
+Garage Floor Coating Madison
+Commercial Floor Coating Huntsville
+18) Standardize components sitewide
+
+Please standardize reusable components so edits can be made once globally.
+
+Components to standardize
+phone number block
+quote form
+CTA buttons
+review section
+trust badges
+service area block
+footer NAP/contact area
+metadata generation logic if templated
+
+This will make future scaling much easier.
