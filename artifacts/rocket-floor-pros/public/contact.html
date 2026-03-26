@@ -128,8 +128,8 @@
         <div class="form-card" id="contact-form-card">
           <h3 class="form-card-title">Request Your Free Estimate</h3>
           <p class="form-card-sub">We'll contact you within 1 hour · Mon–Sat 7am–6pm</p>
-          <form id="contact-form" action="https://formspree.io/f/xpwqrjkl" method="POST">
-            <input type="hidden" name="_subject" value="Contact Page Lead - Rocket Floor Pros">
+          <form id="contact-form" action="/api/subscribe" method="POST">
+            <input type="hidden" name="source" value="contact-page">
             <div class="form-inline-row">
               <div class="form-group">
                 <label class="form-label" for="c-name">First Name *</label>
@@ -201,7 +201,10 @@
       const btn = this.querySelector('button[type="submit"]');
       btn.textContent = 'Sending…'; btn.disabled = true;
       try {
-        const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
+        const fd = new FormData(this);
+        const payload = {};
+        fd.forEach((val, key) => { payload[key] = val; });
+        const res = await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
         if (res.ok) {
           document.getElementById('contact-form-card').style.display = 'none';
           document.getElementById('contact-success').classList.add('visible');

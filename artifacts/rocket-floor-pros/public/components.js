@@ -188,8 +188,8 @@ function renderMainForm(idSuffix) {
         <p class="form-success-body">A specialist will call you within the next 60 minutes.<br>Keep your phone nearby — we may call or text.</p>
         <a href="#faq" class="blue-link">While you wait, read our most common questions below →</a>
       </div>
-      <form id="main-form${idSuffix}" action="https://formspree.io/f/xpwqrjkl" method="POST">
-        <input type="hidden" name="_subject" value="New Lead - Rocket Floor Pros">
+      <form id="main-form${idSuffix}" action="/api/subscribe" method="POST">
+        <input type="hidden" name="source" value="main-estimate-form">
 
         <div class="form-inline-row">
           <div class="form-group">
@@ -406,10 +406,12 @@ function initMainForm(suffix) {
 
     try {
       const data = new FormData(form);
-      const response = await fetch(form.action, {
+      const payload = {};
+      data.forEach((val, key) => { payload[key] = val; });
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
       });
       if (response.ok) {
         form.style.display = 'none';
@@ -453,10 +455,13 @@ function initSimpleForms() {
       if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
       try {
         const data = new FormData(form);
-        const response = await fetch('https://formspree.io/f/xpwqrjkl', {
+        const payload = {};
+        data.forEach((val, key) => { payload[key] = val; });
+        payload.source = payload.source || form.closest('[id]') ? (form.closest('[id]') || {}).id || 'simple-form' : 'simple-form';
+        const response = await fetch('/api/subscribe', {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
         });
         if (response.ok) {
           form.innerHTML = '<p style="color: var(--success); font-family: Inter, sans-serif; font-weight:600; text-align:center; padding:20px 0;">✅ Request received! We\'ll call you within the hour.</p>';
