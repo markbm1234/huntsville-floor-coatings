@@ -293,6 +293,15 @@ function renderMainForm(idSuffix) {
 function initHeader() {
   const header = document.getElementById('site-header');
   if (!header) return;
+
+  // Move header to be a direct child of <body> so position:sticky works
+  // (when injected inside #header-placeholder, sticky only applies within that small div)
+  const placeholder = document.getElementById('header-placeholder');
+  if (placeholder && placeholder.contains(header)) {
+    document.body.insertBefore(header, document.body.firstChild);
+    placeholder.style.display = 'none';
+  }
+
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 60);
   });
