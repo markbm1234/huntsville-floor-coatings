@@ -55,7 +55,7 @@
   <section class="hero-compact">
     <div class="container">
       <h1>Contact Rocket Floor Pros</h1>
-      <p>Get your free estimate or ask us a question. We respond within 1 hour during business hours.</p>
+      <p>Get your free estimate or ask us a question. We respond as soon as possible during business hours.</p>
     </div>
   </section>
 
@@ -65,7 +65,7 @@
       <div class="fade-in">
         <h2 class="contact-info-title">Get in Touch</h2>
         <p style="font-family: 'Inter', sans-serif; font-size: 16px; color: var(--gray-700); line-height: 1.7; margin-bottom: 32px;">
-          We typically respond within 1 hour during business hours. Fill out the form or call us directly — real people answer our phones, every day.
+          We typically respond as soon as possible during business hours. Fill out the form or call us directly — real people answer our phones, every day.
         </p>
 
         <div class="contact-info-item">
@@ -104,7 +104,7 @@
           <div>
             <div class="contact-info-label">Response Time</div>
             <div class="contact-info-value">
-              We aim to respond to all form submissions within 60 minutes during business hours. On-site estimates are typically scheduled within 24–48 hours.
+              We aim to respond to all form submissions as soon as possible during business hours. On-site estimates are typically scheduled within 24–48 hours.
             </div>
           </div>
         </div>
@@ -118,16 +118,16 @@
       <!-- Right: Contact Form -->
       <div class="fade-in">
         <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--blue-700); font-weight: 600; margin-bottom: 16px; background: var(--blue-50); padding: 12px 16px; border-radius: 8px; border-left: 3px solid var(--blue-500);">
-          ⏱ We typically respond within 1 hour during business hours.
+          ⏱ A specialist will reach out as soon as possible during business hours.
         </p>
         <div id="contact-success" class="form-success">
           <div class="form-success-check" style="color: var(--success);">✅</div>
           <h3 class="form-success-title">We've received your message!</h3>
-          <p class="form-success-body">A specialist will call you within the next 60 minutes during business hours.</p>
+          <p class="form-success-body">A specialist will reach out as soon as possible during business hours.</p>
         </div>
         <div class="form-card" id="contact-form-card">
           <h3 class="form-card-title">Request Your Free Estimate</h3>
-          <p class="form-card-sub">We'll contact you within 1 hour · Mon–Sat 7am–6pm</p>
+          <p class="form-card-sub">A specialist will reach out as soon as possible · Mon–Sat 7am–6pm</p>
           <form id="contact-form" action="/api/subscribe" method="POST">
             <input type="hidden" name="source" value="contact-page">
             <div class="form-inline-row">
@@ -176,10 +176,23 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="form-label">Are You the Homeowner? *</label>
+              <div class="owner-radio-group" id="c-owner-group">
+                <label class="owner-radio-label">
+                  <input type="radio" name="owner" value="owner" onchange="handleContactOwner(this.value)"> Yes, I own this property
+                </label>
+                <label class="owner-radio-label">
+                  <input type="radio" name="owner" value="renter" onchange="handleContactOwner(this.value)"> No, I rent / I am not the owner
+                </label>
+              </div>
+              <div id="c-renter-warning" class="renter-warning">⚠️ Unfortunately, we require homeowner approval before any estimate or installation. Please check with the property owner before submitting.</div>
+              <div id="c-owner-err" class="form-error-msg">Please select an option.</div>
+            </div>
+            <div class="form-group">
               <label class="form-label" for="c-message">Additional Notes</label>
               <textarea class="form-input form-textarea" id="c-message" name="message" placeholder="Any questions or special notes about your project…" style="height: 90px;"></textarea>
             </div>
-            <button type="submit" class="btn btn-full" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px;">
+            <button type="submit" id="c-submit-btn" class="btn btn-full" style="height:52px; font-family:'Montserrat',sans-serif; font-size:16px; border-radius:8px;">
               SEND MY FREE ESTIMATE REQUEST →
             </button>
             <p class="form-submit-note">🔒 By submitting, you agree to be contacted by phone, email, or SMS about your estimate. <a href="privacy.html" style="color:var(--blue-700);">Privacy Policy</a>.</p>
@@ -196,9 +209,30 @@
     // header is hardcoded in HTML - no injection needed
     document.getElementById('footer-placeholder').innerHTML = renderFooter();
 
+    function handleContactOwner(value) {
+      const warning = document.getElementById('c-renter-warning');
+      const btn = document.getElementById('c-submit-btn');
+      if (value === 'renter') {
+        warning && warning.classList.add('visible');
+        if (btn) { btn.disabled = true; btn.style.opacity = '0.5'; }
+      } else {
+        warning && warning.classList.remove('visible');
+        if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+      }
+    }
+
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
+      const ownerRadios = this.querySelectorAll('input[name="owner"]');
+      const ownerChecked = [...ownerRadios].some(r => r.checked);
+      const ownerErrEl = document.getElementById('c-owner-err');
+      if (!ownerChecked) {
+        ownerErrEl && ownerErrEl.classList.add('visible');
+        return;
+      } else {
+        ownerErrEl && ownerErrEl.classList.remove('visible');
+      }
+      const btn = document.getElementById('c-submit-btn');
       btn.textContent = 'Sending…'; btn.disabled = true;
       try {
         const fd = new FormData(this);

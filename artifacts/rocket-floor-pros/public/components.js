@@ -135,7 +135,7 @@ function renderFAQ() {
     },
     {
       q: 'How long does epoxy floor installation take?',
-      a: 'Most residential garages are completed in a single day. We arrive at 7:30–8am and finish by early afternoon. You can walk on the floor within 6 hours of completion and park your vehicle on it the following morning.'
+      a: 'Most residential garages are completed in one to three days. We arrive at 7:30–8am and finish by early afternoon. You can walk on the floor within 6 hours of completion and most floors are walkable within hours of completion.'
     },
     {
       q: "What's the difference between epoxy and polyaspartic?",
@@ -181,11 +181,11 @@ function renderMainForm(idSuffix) {
   return `
     <div class="form-card">
       <h3 class="form-card-title">Request Your Free Estimate</h3>
-      <p class="form-card-sub">We'll contact you within 1 hour · Mon–Sat 7am–6pm</p>
+      <p class="form-card-sub">A specialist will reach out as soon as possible · Mon–Sat 7am–6pm</p>
       <div id="form-success${idSuffix}" class="form-success">
         <div class="form-success-check" style="color: var(--success);">✅</div>
         <h3 class="form-success-title">We've received your request!</h3>
-        <p class="form-success-body">A specialist will call you within the next 60 minutes.<br>Keep your phone nearby — we may call or text.</p>
+        <p class="form-success-body">A specialist will reach out as soon as possible.<br>Keep your phone nearby — we may call or text.</p>
         <a href="#faq" class="blue-link">While you wait, read our most common questions below →</a>
       </div>
       <form id="main-form${idSuffix}" action="/api/subscribe" method="POST">
@@ -615,7 +615,7 @@ function initSimpleForms() {
             page_url: window.location.href,
             page_title: document.title
           });
-          form.innerHTML = '<p style="color: var(--success); font-family: Inter, sans-serif; font-weight:600; text-align:center; padding:20px 0;">✅ Request received! We\'ll call you within the hour.</p>';
+          form.innerHTML = '<p style="color: var(--success); font-family: Inter, sans-serif; font-weight:600; text-align:center; padding:20px 0;">✅ Request received! We\'ll reach out as soon as possible.</p>';
         } else throw new Error();
       } catch {
         if (btn) { btn.textContent = origText; btn.disabled = false; }

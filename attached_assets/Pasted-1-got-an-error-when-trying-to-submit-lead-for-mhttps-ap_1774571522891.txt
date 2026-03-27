@@ -1,0 +1,29 @@
+1. got an error when trying to submit lead for mhttps://app.screencast.com/UsBjjtz6LAPUd
+
+2. lets not promise next day like Park your car the next morning.   Say something more you could have your new floor in less than a couple of days.
+
+3. In the blue strip in the middle of the first page we want to loosen up some of this language and not be so braggy. For example I would lose:
+- 500+ garages coded
+- update one-day installation to one to three-day installation
+- lifetime warranty is fine
+- I would lose A+ BBB rating
+I would come up with three other options to put there so it looks reliable but not lame.
+
+4. In the "What we install" section I would make the most popular one be a different color background and stand out more than the other ones by default. 
+
+5. In the process in step three you say your floor is done tomorrow. That's too specific. Say something like your floor is done within one to three days. Also it says most residential garages are completed in a single day. Let's say most residential garages are completed in one to three days. 
+
+6. In the "Ready to get started" blue box in the center, you say "Tell us your phone number and we'll call you within an hour" but the form field is an email field. Update that to be a phone field and also add some sort of related background graphic to that box to make it look a little more interesting. 
+
+7. Anywhere you say that someone will call you within 60 min, remove that. Change it to something more broad, like a specialist will call you as soon as possible. 
+
+8. In the bottom footer you have another form and it doesn't have a phone field. Update that form so you have a name, email, and phone with a Get Free Estimate button. Also make that a separate section from the actual footer. Also add an attractive minimal background image in that section so it gives it a little visual interest. 
+
+9. On the About Us page add three sample headshots to the Our Team section. 
+
+10. Do the same updates to the form and the footer as you did on the home page and make it look good.
+
+11. On the Contact Us page, you are missing the question that you have on the home page on that form that says, "Are you the homeowner?" Add that in and make it mimic the one on the home page. 
+
+11. On the work section with the portfolio pictures, I want you to create two new AI-generated images that show two more examples of our work. Make them realistic and put them on the bottom row so we have two on the top, bigger than a row of three. 
+
