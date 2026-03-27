@@ -6,3 +6,9 @@ id = "oeTHLOsdaHAT_ysyFk-T8"
 uri = "file://rocket-floor-pros-backup.tar.gz"
 type = "unspecified"
 title = "Rocket Floor Pros — Full Site Backup"
+
+[[outputs]]
+id = "6hQls0VItnlSgCm8OwVXS"
+uri = "file://rocket-floor-pros-website.tar.gz"
+type = "unspecified"
+title = "Rocket Floor Pros — Website + API Source (.tar.gz)"
