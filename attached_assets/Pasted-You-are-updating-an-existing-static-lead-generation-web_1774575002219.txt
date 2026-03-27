@@ -1,0 +1,454 @@
+You are updating an existing static lead generation website for Rocket Floor Pros, a North Alabama epoxy / garage floor coating site.
+
+IMPORTANT:
+- This is NOT a request to redesign the whole site.
+- Do NOT make the site look keyword stuffed, spammy, over-optimized, or unnatural.
+- Keep the current clean/professional tone and layout.
+- We want a restrained, human-sounding internal linking strategy that helps SEO and user navigation.
+- Add links only where they genuinely help the reader.
+- Prioritize contextual links inside body copy and small “related pages” sections where appropriate.
+- Avoid “click here” and avoid repeating the exact same anchor text over and over.
+- Do not add excessive links to any page.
+- Keep all current header/footer nav intact unless noted.
+- Do not create new pages in this task.
+- Use only the existing pages listed below.
+
+EXISTING PAGES TO USE
+- /index.html
+- /about.html
+- /contact.html
+- /blog.html
+- /privacy.html
+- /madison-al.html
+- /athens-al.html
+- /decatur-al.html
+- /blog-post.html
+- /blog-epoxy-vs-polyaspartic.html
+- /blog-prepare-garage.html
+- /blog-cleaning.html
+- /blog-5-signs.html
+
+GOAL
+Improve internal linking in a natural way so Google better understands:
+- the homepage is the main Huntsville / North Alabama hub
+- Madison, Athens, and Decatur are location/supporting pages
+- blog posts support the money pages
+- users can easily move from informational content to estimate/contact pages
+- users can move between nearby city pages naturally
+
+OVERALL LINKING RULES
+1. Do not add more than 3 new contextual body links in any one main content area.
+2. Do not add more than 2 small “related links” / “nearby areas” / “helpful resources” sections per page.
+3. Do not overuse exact-match anchors. Vary them naturally.
+4. Use plain-English anchor text that sounds like normal copy.
+5. Every added link must feel helpful to a real visitor.
+6. Preserve readability and design spacing.
+7. Do not add giant link blocks.
+8. Do not create keyword lists.
+9. Keep total NEW internal links added per page approximately:
+   - homepage: 4–6
+   - city pages: 4–6
+   - blog posts: 3–5
+   - about/contact: 2–4
+10. Keep existing links that already make sense.
+
+ANCHOR TEXT STYLE
+Use natural anchor text like:
+- garage floor coating in Madison
+- Decatur floor coating services
+- Athens homeowners
+- compare epoxy and polyaspartic coatings
+- how to prepare for installation day
+- request a free estimate
+- contact our team
+- nearby service areas
+
+Avoid robotic anchors like:
+- epoxy garage floor coating Madison AL
+- best epoxy coating Madison Alabama cheap near me
+- Huntsville epoxy flooring contractor Alabama
+
+IMPLEMENTATION BY PAGE
+
+==================================================
+1) /index.html
+==================================================
+
+Current situation:
+- Homepage already links to Madison, Decatur, Athens near the bottom.
+- It already has CTA links to the estimate form.
+- Do NOT overload the homepage with more links.
+
+What to add:
+A) In the main service-related copy, add 1 natural sentence mentioning nearby areas and link the city pages:
+- “We also help homeowners in Madison, Decatur, and Athens with durable floor coating systems built for North Alabama conditions.”
+Link:
+- Madison -> /madison-al.html
+- Decatur -> /decatur-al.html
+- Athens -> /athens-al.html
+
+B) In the services or benefits copy, add 1 contextual link to the comparison article:
+Anchor:
+- compare epoxy and polyaspartic options
+URL:
+- /blog-epoxy-vs-polyaspartic.html
+
+C) Near the estimate CTA or FAQ intro, add 1 contextual link to preparation article:
+Anchor:
+- how to prepare your garage before installation
+URL:
+- /blog-prepare-garage.html
+
+D) Near a trust/helpful section, add 1 contextual link to cleaning/maintenance:
+Anchor:
+- how to keep a coated floor looking great
+URL:
+- /blog-cleaning.html
+
+Limits for homepage:
+- Add only 4–5 NEW internal links total.
+- Do not create a large “related links” block.
+- Keep it subtle.
+
+==================================================
+2) /madison-al.html
+==================================================
+
+Goal:
+Make Madison page feel locally useful, while gently connecting it to other nearby service area pages and supporting content.
+
+What to add:
+A) In the main body copy, add 1 natural reference to Huntsville as the main hub:
+Anchor:
+- our Huntsville-area team
+URL:
+- /index.html
+
+B) In a paragraph about nearby homeowners or surrounding communities, add 2 local page links:
+Anchors:
+- Decatur homeowners -> /decatur-al.html
+- Athens homeowners -> /athens-al.html
+
+C) Add one short section near the lower half of the page titled:
+Helpful Resources
+Inside it add only 2 bullets:
+- Compare epoxy and polyaspartic coatings -> /blog-epoxy-vs-polyaspartic.html
+- Get in touch for a free estimate -> /contact.html
+
+Limits:
+- No more than 5 NEW links on this page.
+- Keep “Helpful Resources” compact and styled consistently with the site.
+
+==================================================
+3) /athens-al.html
+==================================================
+
+What to add:
+A) In the intro or early body copy, add 1 link back to the main hub:
+Anchor:
+- North Alabama floor coating team
+URL:
+- /index.html
+
+B) In a service-area paragraph, add 2 nearby city links:
+Anchors:
+- Madison area projects -> /madison-al.html
+- Decatur projects -> /decatur-al.html
+
+C) Add one short lower-page section titled:
+Related Pages
+Include only 2 links:
+- See how to prepare for installation day -> /blog-prepare-garage.html
+- Request your free estimate -> /contact.html
+
+Limits:
+- No more than 5 NEW links total.
+- Do not add more than one mini related-links section.
+
+==================================================
+4) /decatur-al.html
+==================================================
+
+What to add:
+A) Add 1 contextual link in body copy back to homepage:
+Anchor:
+- our Huntsville home base
+URL:
+- /index.html
+
+B) In nearby-area copy, add 2 city links:
+Anchors:
+- Madison service area -> /madison-al.html
+- Athens service area -> /athens-al.html
+
+C) Add one short section near bottom titled:
+Helpful Reading
+Include only 2 links:
+- Compare coating options -> /blog-epoxy-vs-polyaspartic.html
+- Learn how to care for a coated garage floor -> /blog-cleaning.html
+
+Optional:
+If the page already feels link-heavy, skip one of the city links and keep total NEW links at 4.
+
+==================================================
+5) /blog.html
+==================================================
+
+This is the blog index, so don’t overdo it.
+
+What to add:
+A) Add a short intro paragraph near the top or under the page intro that says something like:
+“If you’re researching a garage floor coating project in Huntsville, Madison, Decatur, or Athens, these guides will help you compare options, understand pricing, and get ready for installation.”
+
+Link only these 4 items naturally:
+- Huntsville -> /index.html
+- Madison -> /madison-al.html
+- Decatur -> /decatur-al.html
+- Athens -> /athens-al.html
+
+Limits:
+- Add only 3–4 NEW links here.
+- Do not change the existing blog card links.
+
+==================================================
+6) /blog-epoxy-vs-polyaspartic.html
+==================================================
+
+Current page already has a lot of links. Be careful.
+Do not add more than 3 NEW internal links.
+
+What to add:
+A) In the conclusion or recommendation area, add a natural CTA sentence:
+“For homeowners in Madison, Decatur, and Athens, the right system often depends on how the garage is used and how quickly you need it back in service.”
+Link only 2 of these, not all 3:
+- Madison -> /madison-al.html
+- Decatur -> /decatur-al.html
+(leave Athens unlinked if the paragraph feels crowded)
+
+B) Add 1 direct conversion link near the CTA:
+Anchor:
+- request a free estimate
+URL:
+- /contact.html
+
+Do not add any more link blocks.
+
+==================================================
+7) /blog-prepare-garage.html
+==================================================
+
+What to add:
+A) In the opening or closing section, add 1 natural link back to the main service hub:
+Anchor:
+- Huntsville garage floor coating team
+URL:
+- /index.html
+
+B) In a paragraph discussing project planning, add 1 comparison link:
+Anchor:
+- compare epoxy and polyaspartic systems
+URL:
+- /blog-epoxy-vs-polyaspartic.html
+
+C) Add 1 conversion link at the end:
+Anchor:
+- contact us to schedule your estimate
+URL:
+- /contact.html
+
+Total NEW links:
+- 3 only
+
+==================================================
+8) /blog-cleaning.html
+==================================================
+
+What to add:
+A) In the intro or closing, add 1 link back to homepage:
+Anchor:
+- North Alabama garage floor coating services
+URL:
+- /index.html
+
+B) Add 1 nearby-area sentence in the body or conclusion:
+“This same maintenance advice applies whether you’re in Madison, Athens, or Decatur.”
+Link only 2 of those cities, not all 3:
+- Madison -> /madison-al.html
+- Athens -> /athens-al.html
+
+C) Add 1 CTA link:
+Anchor:
+- get a free estimate for a new coating
+URL:
+- /contact.html
+
+Total NEW links:
+- 3–4 max
+
+==================================================
+9) /blog-5-signs.html
+==================================================
+
+What to add:
+A) Add 1 link back to homepage within body copy:
+Anchor:
+- Huntsville-area floor coating team
+URL:
+- /index.html
+
+B) Add 1 contextual link to the prep article:
+Anchor:
+- how to get ready for installation day
+URL:
+- /blog-prepare-garage.html
+
+C) Add 1 conversion link near the bottom:
+Anchor:
+- request a free estimate
+URL:
+- /contact.html
+
+Optional:
+If there is a natural sentence about nearby homeowners, add only 1 city link:
+- Madison -> /madison-al.html
+
+Total NEW links:
+- 3 or 4 max
+
+==================================================
+10) /blog-post.html
+(appears to be the pricing/cost guide article)
+==================================================
+
+What to add:
+A) Add 1 homepage/service hub link:
+Anchor:
+- Huntsville garage floor coating
+URL:
+- /index.html
+
+B) Add 1 local page link:
+Anchor:
+- Madison area homeowners
+URL:
+- /madison-al.html
+
+C) Add 1 comparison article link:
+Anchor:
+- compare epoxy and polyaspartic pricing/value
+URL:
+- /blog-epoxy-vs-polyaspartic.html
+
+D) Add 1 conversion link:
+Anchor:
+- contact us for a free estimate
+URL:
+- /contact.html
+
+Total NEW links:
+- 4 max
+
+==================================================
+11) /about.html
+==================================================
+
+Current page is light on supporting internal links.
+
+What to add:
+A) In company/about copy, add 1 homepage link:
+Anchor:
+- garage floor coating services in Huntsville
+URL:
+- /index.html
+
+B) Add 1 local coverage sentence:
+“We also work with homeowners in Madison, Decatur, and Athens.”
+Link only 2 of these:
+- Madison -> /madison-al.html
+- Decatur -> /decatur-al.html
+
+C) Add 1 contact CTA near the end:
+Anchor:
+- contact our team
+URL:
+- /contact.html
+
+Total NEW links:
+- 3–4 max
+
+==================================================
+12) /contact.html
+==================================================
+
+Do not over-link the contact page.
+
+What to add:
+A) Add one short sentence above or below the form:
+“We regularly help homeowners in Huntsville, Madison, Decatur, and Athens.”
+Link only 3 of those:
+- Huntsville -> /index.html
+- Madison -> /madison-al.html
+- Athens -> /athens-al.html
+
+B) Near the phone/CTA copy, add 1 link:
+Anchor:
+- read our latest flooring tips
+URL:
+- /blog.html
+
+Total NEW links:
+- 4 max
+
+==================================================
+13) /privacy.html
+==================================================
+
+Do not add any SEO link blocks here.
+Leave it essentially alone.
+Only keep current functional/nav links.
+
+==================================================
+TECHNICAL / UX REQUIREMENTS
+==================================================
+
+1. Do not break layout or spacing.
+2. Use existing typography/button/link styles where possible.
+3. If adding “Helpful Resources” or “Related Pages” sections, keep them visually small and clean:
+   - simple heading
+   - 2 bullet links max
+   - no large boxes unless already consistent with design
+4. Do not add links inside headings unless already used on the site.
+5. Do not add duplicate links to the same URL in the same paragraph.
+6. Do not insert unnatural city names repeatedly.
+7. If a page already feels crowded, choose the lower end of the link count.
+8. Preserve current CTAs to phone and estimate form.
+
+ANCHOR TEXT VARIATION EXAMPLES
+Use a mix of these styles naturally:
+- our Huntsville-area team
+- North Alabama floor coating team
+- garage floor coating in Madison
+- Decatur service area
+- Athens homeowners
+- compare epoxy and polyaspartic coatings
+- how to prepare for installation day
+- how to care for a coated garage floor
+- request a free estimate
+- contact our team
+
+AVOID THESE PATTERNS
+- Do not stuff “epoxy garage floor coating [city] AL” repeatedly.
+- Do not build giant footer SEO link lists.
+- Do not add sitewide blocks full of exact-match anchors.
+- Do not add links to every city on every paragraph.
+- Do not make the copy sound like it was written for search engines.
+
+DELIVERABLES
+Please make the edits directly in the HTML files and then provide:
+1. A list of each file changed
+2. The exact new internal links added on each page
+3. Any small section headings added such as “Helpful Resources” or “Related Pages”
+4. Confirmation that the site still looks clean and non-spammy
+
+IMPORTANT FINAL INSTRUCTION
+This should feel like a high-quality local service website with thoughtful internal linking, not an SEO gimmick site. When in doubt, add fewer links, not more.
